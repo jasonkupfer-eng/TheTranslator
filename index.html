@@ -183,37 +183,24 @@
                 <!-- Be sure this points to your transparent screen cutout PNG -->
                 <div class="cabinet-layer" style="background-image: url('Screen.png');"></div>
 
-                <!-- LAYER 3 (TOP): The Native 3D Control Deck -->
-                <div class="native-3d-deck">
+                <!-- LAYER 3 (TOP): The Invisible Interactive Control Deck -->
+                <div class="control-deck">
                   
-                  <!-- Left Controls (Upload & Formats) -->
-                  <div class="deck-group left-group">
-                    <button class="arcade-joy pink-joy" id="uploadBtn" title="Upload File" onclick="document.getElementById('fileInput').click()"></button>
-                    <div class="btn-grid">
-                      <button class="arcade-push-btn active" data-format="vtt">VTT</button>
-                      <button class="arcade-push-btn" data-format="srt">SRT</button>
-                      <button class="arcade-push-btn" data-format="ttml">TTML</button>
-                      <button class="arcade-push-btn" data-format="txt">TXT</button>
-                    </div>
-                  </div>
+                  <!-- Left Joystick (Upload) -->
+                  <button class="invisible-btn joystick left-joy" id="uploadBtn" title="Upload File" onclick="document.getElementById('fileInput').click()"></button>
+                  
+                  <!-- Format Buttons (Mapped to the left 4 buttons) -->
+                  <button class="invisible-btn format-btn l-btn-1 active" data-format="vtt" title="VTT Format"></button>
+                  <button class="invisible-btn format-btn l-btn-2" data-format="srt" title="SRT Format"></button>
+                  <button class="invisible-btn format-btn l-btn-3" data-format="ttml" title="TTML Format"></button>
+                  <button class="invisible-btn format-btn l-btn-4" data-format="txt" title="TXT Format"></button>
 
-                  <!-- Center Controls (Timecode Calibration) -->
-                  <div class="deck-group center-group">
-                    <button class="arcade-push-btn round-btn" id="decreaseTime" title="Shift -0.5s">-</button>
-                    <button class="arcade-push-btn round-btn" id="increaseTime" title="Shift +0.5s">+</button>
-                  </div>
+                  <!-- Timecode Buttons (Mapped to the center 2 buttons) -->
+                  <button class="invisible-btn c-btn-1" id="decreaseTime" title="Shift -0.5s"></button>
+                  <button class="invisible-btn c-btn-2" id="increaseTime" title="Shift +0.5s"></button>
 
-                  <!-- Right Controls (Execute) -->
-                  <div class="deck-group right-group">
-                    <div class="btn-grid">
-                      <!-- Dummy buttons to cover the painted ones on the right -->
-                      <div class="arcade-push-btn dummy-btn pink-dummy"></div>
-                      <div class="arcade-push-btn dummy-btn yellow-dummy"></div>
-                      <div class="arcade-push-btn dummy-btn pink-dummy"></div>
-                      <div class="arcade-push-btn dummy-btn yellow-dummy"></div>
-                    </div>
-                    <button class="arcade-joy cyan-joy" id="executeBtn" title="Execute Conversion"></button>
-                  </div>
+                  <!-- Right Joystick (Execute) -->
+                  <button class="invisible-btn joystick right-joy" id="executeBtn" title="Execute Conversion"></button>
                   
                   <!-- Hidden File Input -->
                   <input type="file" id="fileInput" accept=".srt,.vtt,.ttml,.xml,.txt" style="display: none;">

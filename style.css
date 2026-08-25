@@ -96,113 +96,53 @@ body {
           pointer-events: none; 
         }
 
-        /* LAYER 3: The Native 3D Control Deck */
-        .native-3d-deck {
+        /* LAYER 3: The Interactive Buttons */
+        .control-deck {
           position: absolute;
           z-index: 3;
-          /* Maps the container to the physical boundaries of the purple deck */
-          top: 68.5%; 
-          left: 32%;
-          width: 36%;
-          height: 14%;
-          
-          /* The Magic Bullet: Tilts the HTML layer to match the image's perspective */
-          transform: perspective(600px) rotateX(25deg);
-          
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 2%;
-          box-sizing: border-box;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
         }
 
-        .deck-group {
-          display: flex;
-          align-items: center;
-          gap: 1.5vw;
-        }
-
-        .center-group {
-          gap: 1vw;
-          margin-top: 1.5%; /* Nudges the center buttons down to match the slight arc */
-        }
-
-        /* 3D Joysticks */
-        .arcade-joy {
-          width: 2.2vw;
-          height: 2.2vw;
-          border-radius: 50%;
-          border: none;
-          cursor: pointer;
-          box-shadow: 0 8px 0 #111, 0 10px 10px rgba(0,0,0,0.8);
-          transition: transform 0.1s, box-shadow 0.1s;
-          position: relative;
-        }
-        
-        .arcade-joy::after {
-          content: '';
+        .invisible-btn {
           position: absolute;
-          bottom: -6px; left: 50%;
-          transform: translateX(-50%);
-          width: 6px; height: 12px;
-          background: linear-gradient(to right, #222, #666, #222);
-          z-index: -1;
-        }
-
-        .arcade-joy:active {
-          transform: translateY(6px);
-          box-shadow: 0 2px 0 #111, 0 4px 4px rgba(0,0,0,0.8);
-        }
-
-        .pink-joy { background: radial-gradient(circle at 30% 30%, #ff66b3, #ff007f); }
-        .cyan-joy { background: radial-gradient(circle at 30% 30%, #4da6ff, #00f0ff); }
-
-        /* 3D Push Buttons */
-        .btn-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 0.4vw;
-        }
-
-        .arcade-push-btn {
-          background: #222;
-          border: 2px solid #000;
-          color: #666;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.5vw;
-          padding: 0.5vw;
-          border-radius: 6px;
+          border-radius: 50%; 
           cursor: pointer;
-          box-shadow: 0 4px 0 #000, 0 5px 5px rgba(0,0,0,0.6);
-          transition: all 0.1s;
-          text-align: center;
+          
+          /* TEMPORARY DEBUG VISUALS: Delete these two lines once aligned! */
+          border: 2px solid red !important; 
+          background: rgba(255,0,0,0.4) !important; 
         }
 
-        .arcade-push-btn:active {
-          transform: translateY(4px);
-          box-shadow: 0 0 0 #000;
-        }
-
-        .arcade-push-btn.active {
-          background: var(--neon-green);
-          color: #000;
-          box-shadow: 0 4px 0 #090, 0 0 15px var(--neon-green);
-          border-color: #39ff14;
-        }
-
-        .round-btn {
-          border-radius: 50%;
-          width: 1.5vw; height: 1.5vw;
-          padding: 0;
-          display: flex; justify-content: center; align-items: center;
-          background: #ffea00; color: #000;
-          box-shadow: 0 4px 0 #990, 0 5px 5px rgba(0,0,0,0.6);
-          border-color: #ffea00;
-          font-size: 1vw;
+        /* Authentic 8-Bit Hover: Brightens the underlying pixel art without blur */
+        .invisible-btn:hover {
+          background: rgba(255, 255, 255, 0.3) !important;
+          border: none !important; 
         }
         
-        /* Fills the painted buttons on the right */
-        .dummy-btn { cursor: default; padding: 0.8vw; border-radius: 50%; }
-        .dummy-btn:active { transform: none; }
-        .pink-dummy { background: #ff007f; box-shadow: 0 4px 0 #900; border-color: #ff007f; }
-        .yellow-dummy { background: #ffea00; box-shadow: 0 4px 0 #990; border-color: #ffea00; }
+        /* Bright Green highlight for the selected format */
+        .invisible-btn.active {
+          background: rgba(57, 255, 20, 0.4) !important; 
+          border: none !important;
+        }
+
+        /* 
+           HITBOX MAPPING 
+           Adjust the top/left percentages by 0.5% at a time to lock them in!
+        */
+
+        /* Joysticks */
+        .left-joy { top: 70.5%; left: 37.5%; width: 3.5%; height: 6%; }
+        .right-joy { top: 70.5%; left: 58.5%; width: 3.5%; height: 6%; }
+
+        /* Left Button Cluster (Formats) */
+        .l-btn-1 { top: 74%; left: 42.5%; width: 2%; height: 3.5%; }
+        .l-btn-2 { top: 74%; left: 44.5%; width: 2%; height: 3.5%; }
+        .l-btn-3 { top: 76.5%; left: 42%; width: 2%; height: 3.5%; }
+        .l-btn-4 { top: 76.5%; left: 44%; width: 2%; height: 3.5%; }
+
+        /* Center Mini Buttons (Timecode + / -) */
+        .c-btn-1 { top: 73.5%; left: 48%; width: 1.5%; height: 2.5%; }
+        .c-btn-2 { top: 73.5%; left: 50.5%; width: 1.5%; height: 2.5%; }
+        
+        .hidden { display: none !important; }
