@@ -1,130 +1,104 @@
-:root {
-  --neon-green: #39ff14;
-  --neon-red: #ff073a;
-  --crt-bg: #0a0a0a;
-  --cabinet-gray: #1a1a1a;
-}
-
 body {
-  background-color: #000;
-  color: var(--neon-green);
-  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  background-color: #0b0213;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-}
-
-.arcade-cabinet {
-  background-color: var(--cabinet-gray);
-  border: 8px solid #333;
-  border-radius: 15px;
-  padding: 20px;
-  width: 800px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-}
-
-.marquee {
-  text-align: center;
-  border-bottom: 4px solid #333;
-  margin-bottom: 20px;
-}
-
-.marquee h1 {
-  color: var(--neon-red);
-  text-shadow: 0 0 10px var(--neon-red);
-  letter-spacing: 4px;
-}
-
-/* CRT Monitor Effects */
-.crt-monitor {
-  background-color: var(--crt-bg);
-  border: 20px solid #222;
-  border-radius: 40px;
-  height: 300px;
-  position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+  font-family: 'Courier New', monospace;
 }
 
-.crt-monitor::after {
-  content: " ";
-  display: block;
+/* The 16:9 Anchor */
+.arcade-wrapper {
+  position: relative;
+  width: 100vw;
+  max-width: 1400px; /* Caps the size on massive 4K monitors */
+  aspect-ratio: 16 / 9;
+}
+
+/* LAYER 1: CRT Text Content */
+.crt-content {
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 2;
-  background-size: 100% 2px, 3px 100%;
+  z-index: 1;
+  /* Adjust these percentages to perfectly fit the hole you cut out */
+  top: 31%;    
+  left: 36%;
+  width: 28%;
+  height: 27%;
+  background-color: #051416;
+  color: #00f0ff;
+  padding: 1.5%;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.15);
+}
+
+.scanlines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
   pointer-events: none;
 }
 
-.screen-content {
-  padding: 20px;
-  text-shadow: 0 0 5px var(--neon-green);
-  z-index: 1;
-  position: relative;
-}
-
-.drop-zone {
-  border: 2px dashed var(--neon-green);
-  padding: 40px;
-  text-align: center;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-/* Arcade Buttons */
-.control-deck {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  background-color: #2a2a2a;
-  padding: 20px;
-  border-top: 4px solid #111;
-}
-
-.arcade-btn {
-  background-color: #444;
-  color: #fff;
-  border: 4px solid #111;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-family: inherit;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 6px 0 #111;
-  transition: all 0.1s;
-}
-
-.arcade-btn:active {
-  box-shadow: 0 0 0 #111;
-  transform: translateY(6px);
-}
-
-.format-btn.active {
-  background-color: var(--neon-green);
-  color: #000;
-  box-shadow: 0 0 15px var(--neon-green);
-}
-
-.action-btn {
-  background-color: var(--neon-red);
-  font-size: 1.2rem;
-  padding: 15px 30px;
-}
-
-.led-readout {
-  background-color: #000;
-  color: red;
-  padding: 5px 15px;
-  border: 2px inset #444;
-  font-size: 1.5rem;
-}
-
-.hidden { display: none; }
 .blink { animation: blinker 1s linear infinite; }
 @keyframes blinker { 50% { opacity: 0; } }
+
+/* LAYER 2: The Transparent Cabinet Image */
+.cabinet-layer {
+  position: absolute;
+  z-index: 2;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Clicks pass right through the image */
+}
+
+/* LAYER 3: The Interactive Buttons */
+.control-deck {
+  position: absolute;
+  z-index: 3;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.invisible-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%; /* Makes hover effects round like the physical buttons */
+  
+  /* UNCOMMENT THE LINE BELOW TO SEE THE BOXES AND ALIGN THEM */
+  /* border: 2px solid red; background: rgba(255,0,0,0.3); */
+}
+
+/* Hover effects to make the image "glow" when interacted with */
+.invisible-btn:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 42, 133, 0.6); /* Neon pink glow */
+  background: rgba(255, 42, 133, 0.2);
+}
+
+/* 
+   Button Mapping (Rough percentages based on your image layout)
+   Tweak the top/left values until the red debug boxes perfectly 
+   cover the joysticks and buttons in your specific image. 
+*/
+
+/* Joysticks */
+.left-joy { top: 73%; left: 33%; width: 4%; height: 7%; }
+.right-joy { top: 73%; left: 63%; width: 4%; height: 7%; box-shadow: 0 0 15px 5px rgba(0, 240, 255, 0.6); }
+.right-joy:hover { background: rgba(0, 240, 255, 0.2); } /* Cyan glow for right stick */
+
+/* Left Button Cluster */
+.l-btn-1 { top: 77%; left: 41%; width: 2.5%; height: 4.5%; }
+.l-btn-2 { top: 80%; left: 44%; width: 2.5%; height: 4.5%; }
+.l-btn-3 { top: 77%; left: 47%; width: 2.5%; height: 4.5%; }
+.l-btn-4 { top: 80%; left: 49.5%; width: 2.5%; height: 4.5%; }
+
+/* Center Mini Buttons */
+.c-btn-1 { top: 76.5%; left: 52%; width: 1.5%; height: 2.5%; }
+.c-btn-2 { top: 76.5%; left: 55.5%; width: 1.5%; height: 2.5%; }
