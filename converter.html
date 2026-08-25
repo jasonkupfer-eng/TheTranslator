@@ -6,15 +6,6 @@
     <title>A.C.E. | Subtitle Conversion Engine</title>
     <meta name="description" content="Free, 100% secure client-side subtitle format converter. Convert SRT, VTT, TTML, and TXT instantly without cloud uploads.">
 
-    <!-- Google tag (gtag.js) & Tracking -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18320935786"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18320935786');
-    </script>
-
     <!-- Global Assets -->
     <link rel="icon" type="image/png" sizes="192x192" href="https://www.thesubtitlearcade.com/favicon.png">
     <link rel="apple-touch-icon" href="https://www.thesubtitlearcade.com/favicon.png">
@@ -125,8 +116,6 @@
           border: none;
           cursor: pointer;
           border-radius: 50%; 
-          /* Uncomment below to debug button alignment */
-          /* border: 2px solid red; background: rgba(255,0,0,0.3); */
         }
 
         /* Neon Glows on Interaction */
@@ -164,7 +153,7 @@
 <div class="screen-wrapper">
     <div class="arcade-cabinet">
         
-        <!-- We apply flexbox directly to the CRT screen to center the 16:9 image inside it -->
+        <!-- Flexbox applied directly to the CRT screen to center the 16:9 image inside it -->
         <div class="crt-screen" style="display: flex; justify-content: center; align-items: center; background-color: #0b0213; padding: 0; overflow: hidden;">
             
             <!-- THE ARCADE CONVERTER -->
@@ -221,6 +210,6 @@
     </div>
 </div>
 
-<script src="converter.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
