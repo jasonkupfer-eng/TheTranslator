@@ -1,0 +1,130 @@
+:root {
+  --neon-green: #39ff14;
+  --neon-red: #ff073a;
+  --crt-bg: #0a0a0a;
+  --cabinet-gray: #1a1a1a;
+}
+
+body {
+  background-color: #000;
+  color: var(--neon-green);
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.arcade-cabinet {
+  background-color: var(--cabinet-gray);
+  border: 8px solid #333;
+  border-radius: 15px;
+  padding: 20px;
+  width: 800px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.marquee {
+  text-align: center;
+  border-bottom: 4px solid #333;
+  margin-bottom: 20px;
+}
+
+.marquee h1 {
+  color: var(--neon-red);
+  text-shadow: 0 0 10px var(--neon-red);
+  letter-spacing: 4px;
+}
+
+/* CRT Monitor Effects */
+.crt-monitor {
+  background-color: var(--crt-bg);
+  border: 20px solid #222;
+  border-radius: 40px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+}
+
+.crt-monitor::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.screen-content {
+  padding: 20px;
+  text-shadow: 0 0 5px var(--neon-green);
+  z-index: 1;
+  position: relative;
+}
+
+.drop-zone {
+  border: 2px dashed var(--neon-green);
+  padding: 40px;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Arcade Buttons */
+.control-deck {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-top: 4px solid #111;
+}
+
+.arcade-btn {
+  background-color: #444;
+  color: #fff;
+  border: 4px solid #111;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #111;
+  transition: all 0.1s;
+}
+
+.arcade-btn:active {
+  box-shadow: 0 0 0 #111;
+  transform: translateY(6px);
+}
+
+.format-btn.active {
+  background-color: var(--neon-green);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-green);
+}
+
+.action-btn {
+  background-color: var(--neon-red);
+  font-size: 1.2rem;
+  padding: 15px 30px;
+}
+
+.led-readout {
+  background-color: #000;
+  color: red;
+  padding: 5px 15px;
+  border: 2px inset #444;
+  font-size: 1.5rem;
+}
+
+.hidden { display: none; }
+.blink { animation: blinker 1s linear infinite; }
+@keyframes blinker { 50% { opacity: 0; } }

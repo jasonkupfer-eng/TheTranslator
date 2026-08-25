@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Translator | Subtitle Conversion Cab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="arcade-cabinet">
+    <div class="marquee">
+      <h1>THE TRANSLATOR</h1>
+      <p class="subtitle">[ 100% LOCAL PROCESSING // ZERO CLOUD UPLOADS ]</p>
+    </div>
+
+    <!-- The CRT Monitor -->
+    <div class="crt-monitor">
+      <div class="screen-content" id="screenContent">
+        <p class="blink">> INSERT SUBTITLE FILE TO COMMENCE SCAN</p>
+        <div id="dropZone" class="drop-zone">
+          <p>[ DRAG AND DROP FILE HERE ]</p>
+          <input type="file" id="fileInput" accept=".srt,.vtt,.ttml,.xml,.txt">
+        </div>
+        <div id="qcReport" class="hidden">
+           <!-- Diagnostic readouts will inject here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- The Control Deck -->
+    <div class="control-deck">
+      <div class="panel-section">
+        <h3>TARGET FORMAT:</h3>
+        <div class="format-buttons">
+          <button class="arcade-btn format-btn active" data-format="vtt">VTT</button>
+          <button class="arcade-btn format-btn" data-format="srt">SRT</button>
+          <button class="arcade-btn format-btn" data-format="ttml">TTML</button>
+          <button class="arcade-btn format-btn" data-format="txt">TXT</button>
+        </div>
+      </div>
+
+      <div class="panel-section timecode-calibration">
+        <h3>TIMECODE OFFSET (SEC):</h3>
+        <button class="arcade-btn small-btn" id="decreaseTime">-0.5</button>
+        <span id="timeOffsetDisplay" class="led-readout">+0.0</span>
+        <button class="arcade-btn small-btn" id="increaseTime">+0.5</button>
+      </div>
+
+      <div class="panel-section execute-section">
+        <button id="executeBtn" class="arcade-btn action-btn disabled">EXECUTE CONVERSION</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
