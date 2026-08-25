@@ -12,9 +12,10 @@ body {
 /* The 16:9 Anchor */
 .arcade-wrapper {
   position: relative;
-  width: 100vw;
-  max-width: 1400px; /* Caps the size on massive 4K monitors */
-  aspect-ratio: 16 / 9;
+  width: 100%; 
+  max-width: 800px; /* Adjust this so it doesn't get massively tall */
+  aspect-ratio: 1 / 1; /* Change this to match your image's actual ratio! */
+  margin: 0 auto; 
 }
 
 /* LAYER 1: CRT Text Content */
@@ -34,8 +35,16 @@ body {
           flex-direction: column;
           justify-content: flex-start;
           gap: 8px; /* Tighter gap to prevent vertical overflow */
-        }
+transform-origin: center center;
+  animation: 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards crtTurnOn;
+  opacity: 0; /* Starts invisible before the animation kicks in */
+}
 
+@keyframes crtTurnOn {
+  0%   { transform: scale(0.02, 0.005); filter: brightness(10); opacity: 1; }
+  45%  { transform: scale(1, 0.01); filter: brightness(5); opacity: 1; }
+  100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
+}
         .inner-scanlines {
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -90,11 +99,9 @@ body {
           z-index: 2;
           top: 0; left: 0;
           width: 100%; height: 100%;
-          background-size: cover; /* Locks the image perfectly to the 16:9 box */
-          background-position: center;
-          background-repeat: no-repeat;
-          pointer-events: none; 
-        }
+          background-size: cover; /* Forces the image to fill the container edge-to-edge */
+  background-position: center bottom; 
+}
 
         /* LAYER 3: The Interactive Buttons */
         .control-deck {
