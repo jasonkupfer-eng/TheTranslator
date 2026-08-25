@@ -21,19 +21,19 @@ body {
         .crt-content {
           position: absolute;
           z-index: 1;
-          top: 33.5%;    
-          left: 37%;
-          width: 26%;
-          height: 25.5%;
+          top: 33%;    
+          left: 35.5%;
+          width: 29%;
+          height: 26%;
           background-color: #020604;
           padding: 2%;
           box-sizing: border-box;
           overflow: hidden;
           box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.15);
-          /* Flexbox ensures text stacks cleanly and never overlaps */
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          justify-content: flex-start;
+          gap: 8px; /* Tighter gap to prevent vertical overflow */
         }
 
         .inner-scanlines {
@@ -57,7 +57,7 @@ body {
 
         .crt-header h2 {
             font-family: 'Press Start 2P', monospace;
-            font-size: 0.8vw;
+            font-size: 0.8vw; /* Scaled down to prevent wrapping */
             color: #00f0ff;
             text-shadow: 0 0 8px #00f0ff;
             margin: 0;
@@ -66,7 +66,7 @@ body {
 
         .crt-header .offset-display {
             font-family: 'VT323', monospace;
-            font-size: 1.3vw;
+            font-size: 1.2vw; /* Scaled down */
             color: #ff007f;
             text-shadow: 0 0 8px #ff007f;
             margin: 0;
@@ -74,10 +74,10 @@ body {
 
         .crt-body {
             font-family: 'VT323', monospace;
-            font-size: 1.1vw;
+            font-size: 1vw; /* Scaled down */
             color: #39ff14;
             text-shadow: 0 0 5px #39ff14;
-            line-height: 1.4;
+            line-height: 1.2;
             margin: 0;
         }
 
@@ -90,7 +90,7 @@ body {
           z-index: 2;
           top: 0; left: 0;
           width: 100%; height: 100%;
-          background-size: contain;
+          background-size: cover; /* Locks the image perfectly to the 16:9 box */
           background-position: center;
           background-repeat: no-repeat;
           pointer-events: none; 
@@ -109,38 +109,41 @@ body {
           border-radius: 50%; 
           cursor: pointer;
           
-          /* TEMPORARY DEBUG VISUALS: Delete these two lines once aligned! */
+          /* LEAVE THESE ON WHILE YOU CALIBRATE! */
           border: 2px solid red; 
-          background: rgba(255,0,0,0.3); 
+          background: rgba(255,0,0,0.4); 
         }
 
         /* Neon Glows on Interaction */
         .invisible-btn:hover {
           box-shadow: 0 0 15px 5px rgba(255, 42, 133, 0.6); 
           background: rgba(255, 42, 133, 0.2);
-          border: none; /* Hides debug border on hover */
+          border: none; 
         }
         
-        /* Persistent glow for the currently selected format */
         .invisible-btn.active {
           box-shadow: 0 0 15px 5px rgba(57, 255, 20, 0.6); 
           background: rgba(57, 255, 20, 0.2);
           border: none;
         }
 
+        /* 
+           TIGHTENED BUTTON MAPPING 
+           Adjust these percentages by 0.5% at a time to lock them in!
+        */
+
         /* Joysticks */
-        .left-joy { top: 71%; left: 38.5%; width: 3.5%; height: 6.5%; }
-        .right-joy { top: 71%; left: 58%; width: 3.5%; height: 6.5%; box-shadow: 0 0 15px 5px rgba(0, 240, 255, 0.6); }
-        .right-joy:hover { background: rgba(0, 240, 255, 0.2); }
+        .left-joy { top: 69%; left: 37%; width: 3.5%; height: 6.5%; }
+        .right-joy { top: 69%; left: 56.5%; width: 3.5%; height: 6.5%; }
 
         /* Left Button Cluster (Formats) */
-        .l-btn-1 { top: 74.5%; left: 44.5%; width: 2.2%; height: 4%; }
-        .l-btn-2 { top: 74.5%; left: 47.2%; width: 2.2%; height: 4%; }
-        .l-btn-3 { top: 78%; left: 43.5%; width: 2.2%; height: 4%; }
-        .l-btn-4 { top: 78%; left: 46.2%; width: 2.2%; height: 4%; }
+        .l-btn-1 { top: 72%; left: 42%; width: 2.2%; height: 4%; }
+        .l-btn-2 { top: 72%; left: 44.5%; width: 2.2%; height: 4%; }
+        .l-btn-3 { top: 75.5%; left: 41.5%; width: 2.2%; height: 4%; }
+        .l-btn-4 { top: 75.5%; left: 44%; width: 2.2%; height: 4%; }
 
         /* Center Mini Buttons (Timecode + / -) */
-        .c-btn-1 { top: 73.5%; left: 51.2%; width: 1.5%; height: 2.8%; }
-        .c-btn-2 { top: 73.5%; left: 53.8%; width: 1.5%; height: 2.8%; }
+        .c-btn-1 { top: 71.5%; left: 48.5%; width: 1.5%; height: 2.8%; }
+        .c-btn-2 { top: 71.5%; left: 51%; width: 1.5%; height: 2.8%; }
         
         .hidden { display: none !important; }
