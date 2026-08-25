@@ -9,14 +9,28 @@ body {
   font-family: 'Courier New', monospace;
 }
 
-/* The 16:9 Anchor */
-.arcade-wrapper {
-  position: relative;
-  width: 100%; 
-  max-width: 800px; /* Adjust this so it doesn't get massively tall */
-  aspect-ratio: 1 / 1; /* Change this to match your image's actual ratio! */
-  margin: 0 auto; 
-}
+/* ========================================================
+           GLOBAL BORDER OVERRIDE (Shrink-wraps the site border)
+           ======================================================== */
+        .arcade-cabinet {
+            height: auto !important;
+            max-height: none !important;
+        }
+        
+        .crt-screen {
+            height: auto !important;
+            display: block !important;
+        }
+
+        /* ========================================================
+           A.C.E. CONVERTER SPECIFIC STYLING
+           ======================================================== */
+        .arcade-wrapper {
+          position: relative;
+          width: 100%; 
+          aspect-ratio: 16 / 9; /* Locks the widescreen ratio */
+          margin: 0; 
+        }
 
 /* LAYER 1: CRT Text Content */
         .crt-content {
