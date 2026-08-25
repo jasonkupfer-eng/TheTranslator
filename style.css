@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  background-color: #0b0213;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+}
+
+/* The 16:9 Anchor */
+.arcade-wrapper {
+  position: relative;
+  width: 100vw;
+  max-width: 1400px; /* Caps the size on massive 4K monitors */
+  aspect-ratio: 16 / 9;
+}
+
+/* LAYER 1: CRT Text Content */
+        .crt-content {
+          position: absolute;
+          z-index: 1;
+          top: 33.5%;    
+          left: 37%;
+          width: 26%;
+          height: 25.5%;
+          background-color: #020604;
+          padding: 2%;
+          box-sizing: border-box;
+          overflow: hidden;
+          box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.15);
+          /* Flexbox ensures text stacks cleanly and never overlaps */
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .inner-scanlines {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+          background-size: 100% 4px;
+          pointer-events: none;
+          z-index: 5;
+        }
+
+        .crt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px dashed #00f0ff;
+            padding-bottom: 5px;
+            margin-bottom: 0; 
+            flex-shrink: 0;
+        }
+
+        .crt-header h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8vw;
+            color: #00f0ff;
+            text-shadow: 0 0 8px #00f0ff;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .crt-header .offset-display {
+            font-family: 'VT323', monospace;
+            font-size: 1.3vw;
+            color: #ff007f;
+            text-shadow: 0 0 8px #ff007f;
+            margin: 0;
+        }
+
+        .crt-body {
+            font-family: 'VT323', monospace;
+            font-size: 1.1vw;
+            color: #39ff14;
+            text-shadow: 0 0 5px #39ff14;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* LAYER 2: The Transparent Cabinet Image */
+        .cabinet-layer {
+          position: absolute;
+          z-index: 2;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          pointer-events: none; 
+        }
+
+        /* LAYER 3: The Interactive Buttons */
+        .control-deck {
+          position: absolute;
+          z-index: 3;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+        }
+
+        .invisible-btn {
+          position: absolute;
+          border-radius: 50%; 
+          cursor: pointer;
+          
+          /* TEMPORARY DEBUG VISUALS: Delete these two lines once aligned! */
+          border: 2px solid red; 
+          background: rgba(255,0,0,0.3); 
+        }
+
+        /* Neon Glows on Interaction */
+        .invisible-btn:hover {
+          box-shadow: 0 0 15px 5px rgba(255, 42, 133, 0.6); 
+          background: rgba(255, 42, 133, 0.2);
+          border: none; /* Hides debug border on hover */
+        }
+        
+        /* Persistent glow for the currently selected format */
+        .invisible-btn.active {
+          box-shadow: 0 0 15px 5px rgba(57, 255, 20, 0.6); 
+          background: rgba(57, 255, 20, 0.2);
+          border: none;
+        }
+
+        /* Joysticks */
+        .left-joy { top: 71%; left: 38.5%; width: 3.5%; height: 6.5%; }
+        .right-joy { top: 71%; left: 58%; width: 3.5%; height: 6.5%; box-shadow: 0 0 15px 5px rgba(0, 240, 255, 0.6); }
+        .right-joy:hover { background: rgba(0, 240, 255, 0.2); }
+
+        /* Left Button Cluster (Formats) */
+        .l-btn-1 { top: 74.5%; left: 44.5%; width: 2.2%; height: 4%; }
+        .l-btn-2 { top: 74.5%; left: 47.2%; width: 2.2%; height: 4%; }
+        .l-btn-3 { top: 78%; left: 43.5%; width: 2.2%; height: 4%; }
+        .l-btn-4 { top: 78%; left: 46.2%; width: 2.2%; height: 4%; }
+
+        /* Center Mini Buttons (Timecode + / -) */
+        .c-btn-1 { top: 73.5%; left: 51.2%; width: 1.5%; height: 2.8%; }
+        .c-btn-2 { top: 73.5%; left: 53.8%; width: 1.5%; height: 2.8%; }
+        
+        .hidden { display: none !important; }
