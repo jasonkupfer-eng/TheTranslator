@@ -102,6 +102,23 @@
           pointer-events: none; 
         }
 
+<!-- LAYER 2.5: The Full-Canvas Marquee Stack -->
+    <div class="full-canvas-marquee">
+        
+        <!-- Base Marquee (JPG with black background erased by CSS blend mode) -->
+        <img src="marquee.jpg" class="marquee-full-layer" alt="Marquee Base">
+        
+        <!-- The Animated Letters -->
+        <img src="T.png" class="marquee-full-layer m-flicker delay-1" alt="T">
+        <img src="B.png" class="marquee-full-layer m-flicker delay-2" alt="B">
+        <img src="L.png" class="marquee-full-layer m-flicker delay-3" alt="L">
+        <img src="C.png" class="marquee-full-layer m-flicker delay-4" alt="C">
+        
+        <!-- The Animated Star -->
+        <img src="RightStar.png" class="marquee-full-layer star-twinkle" alt="*">
+        
+    </div>
+
         /* LAYER 3: The Interactive Buttons */
         .control-deck {
           position: absolute;

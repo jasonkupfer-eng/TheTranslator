@@ -281,3 +281,56 @@ transform-origin: center center;
             0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #ff007f); }
             95%, 97% { opacity: 0.2; filter: none; }
         }
+
+/* ========================================================
+           FULL-CANVAS MARQUEE STACK
+           ======================================================== */
+        .full-canvas-marquee {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 3; /* Sits above the cabinet, behind the controls */
+            pointer-events: none; /* Prevents user from accidentally clicking the images */
+            
+            /* THE MAGIC BULLET: Makes the black JPG background completely transparent */
+            mix-blend-mode: screen; 
+        }
+
+        .marquee-full-layer {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; /* Locks the canvas tightly to the 16:9 frame */
+        }
+
+        /* The Animation Class */
+        .m-flicker {
+            animation: neonFlicker 3s infinite;
+        }
+
+        /* Staggered Timings for Chaos */
+        .delay-1 { animation-delay: 0.1s; animation-duration: 4s; }
+        .delay-2 { animation-delay: 1.5s; animation-duration: 2.2s; }
+        .delay-3 { animation-delay: 0.6s; animation-duration: 3.5s; }
+        .delay-4 { animation-delay: 2.3s; animation-duration: 2.8s; }
+
+        .star-twinkle {
+            animation: starTwinkle 1.5s infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0%, 94%, 96%, 100% { 
+                opacity: 1; 
+                filter: brightness(1);
+            }
+            95%, 97% { 
+                /* Drops opacity and dims the baked-in glow to look like dead plastic */
+                opacity: 0.15; 
+                filter: brightness(0.5);
+            }
+        }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.4; filter: brightness(0.8); }
+            100% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 5px #ffea00); }
+        }
