@@ -180,10 +180,6 @@ transform-origin: center center;
             pointer-events: none; 
             /* DELETE the mix-blend-mode line entirely! */
         }
-            
-            /* THE MAGIC BULLET: Makes the black JPG background completely transparent */
-            mix-blend-mode: screen; 
-        }
 
         .marquee-full-layer {
             position: absolute;
