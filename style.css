@@ -181,47 +181,73 @@ transform-origin: center center;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 4%;
+            padding: 0 3%;
             box-sizing: border-box;
         }
 
+        /* The Framing Bars */
+        .neon-bar {
+            position: absolute;
+            left: 2%;
+            width: 96%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px #ff5500) drop-shadow(0 0 2px #fff);
+            z-index: 1;
+        }
+        .neon-top { top: 2%; }
+        .neon-bottom { bottom: 2%; }
+
+        /* The Stars */
         .marquee-star {
-            height: 35%; 
+            height: 30%; 
             width: auto;
             filter: drop-shadow(0 0 6px #ffea00);
             animation: starTwinkle 1.5s infinite alternate;
+            z-index: 2;
         }
         
         .star-left { animation-delay: 0.3s; }
         .star-right { animation-delay: 0.8s; }
 
+        /* The Typography Block */
         .marquee-text-block {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            height: 80%; /* Shrunk slightly to give the neon bars breathing room */
             width: 85%;
-            gap: 10%; /* Creates breathing room between the top and bottom words */
+            gap: 8%;   /* Space between top and bottom lines */
+            z-index: 2;
         }
 
         .marquee-row {
             display: flex;
             justify-content: center;
-            align-items: center; /* PREVENTS VERTICAL STRETCHING */
+            align-items: center;
             height: 45%; 
-            gap: 0.3vw; /* Responsive spacing between letters */
         }
 
-        .marquee-top { height: 35%; } /* Keeps the top text appropriately smaller */
+        .marquee-top { 
+            height: 30%; 
+            gap: 1.5vw; /* The physical space between the words 'THE' and 'SUBTITLE' */
+        }
         
-        .space { width: 1.5vw; }
+        .m-word {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
 
         .m-let {
             height: 100%;
             width: auto;
             object-fit: contain;
-            display: block; /* Removes phantom image margins */
+            display: block;
+            /* THE KERNING FIX: Negative margins pull the letters tightly together */
+            margin: 0 -0.1vw; 
             animation-duration: 3s;
             animation-iteration-count: infinite;
         }
