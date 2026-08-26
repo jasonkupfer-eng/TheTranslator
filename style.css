@@ -139,18 +139,18 @@ transform-origin: center center;
           cursor: pointer;
           outline: none;
           
-          /* Pins the dead center of the button to the exact coordinates */
-          transform: translate(-50%, -50%); 
+          /* THE FIX: Removed the center translation! 
+             CSS now natively maps to your Top-Left Photoshop coordinates */
           transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .arcade-btn:active {
-          transform: translate(-50%, calc(-50% + 4px));
+          transform: translateY(4px);
         }
 
         /* --- Master Action Buttons (Top Row) --- */
         /* Left Cluster */
-        .load-btn    { background-image: url('LOAD-UP.png');    top: 75.85%; left: 32.00%; width: 3.16%; aspect-ratio: 1 / 1; }
+        .load-btn    { background-image: url('LOAD-UP.png');    top: 75.85%; left: 31.99%; width: 3.16%; aspect-ratio: 1 / 1; }
         .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 75.85%; left: 35.90%; width: 3.18%; aspect-ratio: 1 / 1; }
         
         /* Right Cluster */
@@ -158,8 +158,8 @@ transform-origin: center center;
         .reset-btn   { background-image: url('RESET-UP.png');   top: 75.85%; left: 64.63%; width: 3.16%; aspect-ratio: 1 / 1; }
 
         /* --- Timecode Calibrators (Middle Dip, Swapped) --- */
-        .minus-btn   { background-image: url('--UP.png');       top: 74.74%; left: 46.18%; width: 2.69%; aspect-ratio: 1 / 1; }
-        .plus-btn    { background-image: url('+-UP.png');       top: 74.87%; left: 50.49%; width: 2.71%; aspect-ratio: 1 / 1; }
+        .minus-btn   { background-image: url('--UP.png');       top: 74.87%; left: 46.18%; width: 2.71%; aspect-ratio: 1 / 1; }
+        .plus-btn    { background-image: url('+-UP.png');       top: 74.74%; left: 50.49%; width: 2.69%; aspect-ratio: 1 / 1; }
 
         /* --- Format Buttons (Bottom Row) --- */
         .srt-btn  { background-image: url('SRT-UP.png');  top: 79.07%; left: 39.08%; width: 4.07%; aspect-ratio: 1 / 1; }
