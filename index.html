@@ -198,25 +198,26 @@
                     <img src="RightStar.png" class="marquee-full-layer star-twinkle" alt="*">
                 </div>
 
-                <!-- LAYER 3 (TOP): The Invisible Interactive Control Deck -->
-                <div class="control-deck">
+                <!-- LAYER 3 (TOP): The Interactive Control Deck -->
                 <div class="control-deck">
                   
-                  <!-- Left Joystick (Upload) -->
-                  <button class="invisible-btn joystick left-joy" id="uploadBtn" title="Upload File" onclick="document.getElementById('fileInput').click()"></button>
-                  
-                  <!-- Format Buttons (Mapped to the left 4 buttons) -->
-                  <button class="invisible-btn format-btn l-btn-1 active" data-format="vtt" title="VTT Format"></button>
-                  <button class="invisible-btn format-btn l-btn-2" data-format="srt" title="SRT Format"></button>
-                  <button class="invisible-btn format-btn l-btn-3" data-format="ttml" title="TTML Format"></button>
-                  <button class="invisible-btn format-btn l-btn-4" data-format="txt" title="TXT Format"></button>
+                  <!-- Master Actions -->
+                  <button class="arcade-btn load-btn" id="uploadBtn" title="Load File"></button>
+                  <button class="arcade-btn ignore-btn" id="ignoreBtn" title="Ignore Warnings"></button>
+                  <button class="arcade-btn execute-btn" id="executeBtn" title="Execute Conversion"></button>
+                  <button class="arcade-btn reset-btn" id="resetBtn" title="Reset Machine"></button>
+                  <button class="arcade-btn hq-btn" id="arcadeBtn" title="Return to HQ"></button>
 
-                  <!-- Timecode Buttons (Mapped to the center 2 buttons) -->
-                  <button class="invisible-btn c-btn-1" id="decreaseTime" title="Shift -0.5s"></button>
-                  <button class="invisible-btn c-btn-2" id="increaseTime" title="Shift +0.5s"></button>
+                  <!-- Timecode Calibrators -->
+                  <button class="arcade-btn cal-btn minus-btn" id="decreaseTime" title="Shift Backward"></button>
+                  <button class="arcade-btn cal-btn plus-btn" id="increaseTime" title="Shift Forward"></button>
 
-                  <!-- Right Joystick (Execute) -->
-                  <button class="invisible-btn joystick right-joy" id="executeBtn" title="Execute Conversion"></button>
+                  <!-- Format Outputs -->
+                  <button class="arcade-btn format-btn srt-btn" data-format="srt"></button>
+                  <button class="arcade-btn format-btn vtt-btn" data-format="vtt"></button>
+                  <button class="arcade-btn format-btn ttml-btn" data-format="ttml"></button>
+                  <button class="arcade-btn format-btn xml-btn" data-format="xml"></button>
+                  <button class="arcade-btn format-btn txt-btn" data-format="txt"></button>
                   
                   <!-- Hidden File Input -->
                   <input type="file" id="fileInput" accept=".srt,.vtt,.ttml,.xml,.txt" style="display: none;">

@@ -117,56 +117,52 @@ transform-origin: center center;
   background-position: center bottom; 
 }
 
-        /* LAYER 3: The Interactive Buttons */
+        /* ========================================================
+           INTERACTIVE CONTROL DECK
+           ======================================================== */
         .control-deck {
           position: absolute;
-          z-index: 3;
+          z-index: 5;
           top: 0; left: 0;
           width: 100%; height: 100%;
         }
 
-        .invisible-btn {
+        .arcade-btn {
           position: absolute;
-          border-radius: 50%; 
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          border: none;
           cursor: pointer;
+          outline: none;
           
-          /* TEMPORARY DEBUG VISUALS: Delete these two lines once aligned! */
-          border: 2px solid red !important; 
-          background: rgba(255,0,0,0.4) !important; 
+          /* Smooth transition for the snap back */
+          transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Authentic 8-Bit Hover: Brightens the underlying pixel art without blur */
-        .invisible-btn:hover {
-          background: rgba(255, 255, 255, 0.3) !important;
-          border: none !important; 
-        }
-        
-        /* Bright Green highlight for the selected format */
-        .invisible-btn.active {
-          background: rgba(57, 255, 20, 0.4) !important; 
-          border: none !important;
+        /* THE CSS PUSH-DOWN TRICK */
+        .arcade-btn:active {
+          transform: translateY(4px);
         }
 
-        /* 
-           HITBOX MAPPING 
-           Adjust the top/left percentages by 0.5% at a time to lock them in!
-        */
+        /* Master Action Buttons (Large) */
+        .load-btn    { background-image: url('LOAD-UP.png');    top: 72%; left: 32%; width: 5.5%; height: 8%; }
+        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 72%; left: 39%; width: 5.5%; height: 8%; }
+        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 72%; left: 46%; width: 5.5%; height: 8%; }
+        .reset-btn   { background-image: url('RESET-UP.png');   top: 72%; left: 53%; width: 5.5%; height: 8%; }
+        .hq-btn      { background-image: url('ARCADE-UP.png');  top: 72%; left: 60%; width: 5.5%; height: 8%; }
 
-        /* Joysticks */
-        .left-joy { top: 70.5%; left: 37.5%; width: 3.5%; height: 6%; }
-        .right-joy { top: 70.5%; left: 58.5%; width: 3.5%; height: 6%; }
+        /* Timecode Calibrators (Small) */
+        .minus-btn { background-image: url('--UP.png'); top: 82%; left: 44%; width: 3.5%; height: 5.5%; }
+        .plus-btn  { background-image: url('+-UP.png'); top: 82%; left: 49%; width: 3.5%; height: 5.5%; }
 
-        /* Left Button Cluster (Formats) */
-        .l-btn-1 { top: 74%; left: 42.5%; width: 2%; height: 3.5%; }
-        .l-btn-2 { top: 74%; left: 44.5%; width: 2%; height: 3.5%; }
-        .l-btn-3 { top: 76.5%; left: 42%; width: 2%; height: 3.5%; }
-        .l-btn-4 { top: 76.5%; left: 44%; width: 2%; height: 3.5%; }
-
-        /* Center Mini Buttons (Timecode + / -) */
-        .c-btn-1 { top: 73.5%; left: 48%; width: 1.5%; height: 2.5%; }
-        .c-btn-2 { top: 73.5%; left: 50.5%; width: 1.5%; height: 2.5%; }
-        
-        .hidden { display: none !important; }
+        /* Format Buttons (Medium) */
+        .srt-btn  { background-image: url('SRT-UP.png');  top: 88%; left: 35%; width: 4.5%; height: 6.5%; }
+        .vtt-btn  { background-image: url('VTT-Up.png');  top: 88%; left: 41%; width: 4.5%; height: 6.5%; }
+        .ttml-btn { background-image: url('TTML-UP.png'); top: 88%; left: 47%; width: 4.5%; height: 6.5%; }
+        .xml-btn  { background-image: url('XML-Up.png');  top: 88%; left: 53%; width: 4.5%; height: 6.5%; }
+        .txt-btn  { background-image: url('TXT-UP.png');  top: 88%; left: 59%; width: 4.5%; height: 6.5%; }
 
 
 /* ========================================================
