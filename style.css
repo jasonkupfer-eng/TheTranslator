@@ -174,13 +174,10 @@ transform-origin: center center;
         .marquee-zone {
             position: absolute;
             z-index: 4; 
-            
-            /* Coordinates mapped precisely to the new cabinet's marquee box */
             top: 10.5%;
             left: 31%;
             width: 38%;
             height: 9%;
-            
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -189,13 +186,12 @@ transform-origin: center center;
         }
 
         .marquee-star {
-            height: 40%; /* Auto-scales the stars based on the box height */
+            height: 35%; 
             width: auto;
-            filter: drop-shadow(0 0 8px #ffea00);
+            filter: drop-shadow(0 0 6px #ffea00);
             animation: starTwinkle 1.5s infinite alternate;
         }
         
-        /* Desync the stars so they blink independently */
         .star-left { animation-delay: 0.3s; }
         .star-right { animation-delay: 0.8s; }
 
@@ -205,35 +201,45 @@ transform-origin: center center;
             align-items: center;
             justify-content: center;
             height: 100%;
-            width: 80%;
-            gap: 5%;
+            width: 85%;
+            gap: 10%; /* Creates breathing room between the top and bottom words */
         }
 
         .marquee-row {
             display: flex;
             justify-content: center;
-            height: 40%; /* Locks the letters to a uniform height */
-            gap: 2px;
+            align-items: center; /* PREVENTS VERTICAL STRETCHING */
+            height: 45%; 
+            gap: 0.3vw; /* Responsive spacing between letters */
         }
 
-        .marquee-top { height: 30%; } /* Makes the top text slightly smaller */
+        .marquee-top { height: 35%; } /* Keeps the top text appropriately smaller */
         
-        .space { width: 1.5vw; } /* The physical space between words */
+        .space { width: 1.5vw; }
 
         .m-let {
             height: 100%;
             width: auto;
             object-fit: contain;
-            /* Applies a heavy CSS glow to the PNGs */
-            filter: drop-shadow(0 0 4px #ff007f) drop-shadow(0 0 10px #ff007f);
-            animation: neonFlicker 3s infinite;
+            display: block; /* Removes phantom image margins */
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
         }
 
-        /* 
-           The Randomized Flicker Engine
-           By staggering these delays, the letters will randomly blink out 
-           at different times, creating a highly realistic broken neon effect.
-        */
+        /* --- THE COLOR SPLIT --- */
+        /* Top Row: Cyan Glow */
+        .marquee-top .m-let {
+            filter: drop-shadow(0 0 6px #00f0ff);
+            animation-name: neonFlickerCyan;
+        }
+
+        /* Bottom Row: Pink Glow */
+        .marquee-bottom .m-let {
+            filter: drop-shadow(0 0 8px #ff007f);
+            animation-name: neonFlickerPink;
+        }
+
+        /* The Randomized Flicker Engine */
         .m-let:nth-child(2n) { animation-delay: 0.1s; animation-duration: 4s; }
         .m-let:nth-child(3n) { animation-delay: 1.4s; animation-duration: 2s; }
         .m-let:nth-child(5n) { animation-delay: 0.8s; animation-duration: 3.5s; }
@@ -241,16 +247,16 @@ transform-origin: center center;
 
         @keyframes starTwinkle {
             0% { opacity: 0.4; filter: drop-shadow(0 0 2px #ffea00); transform: scale(0.9); }
-            100% { opacity: 1; filter: drop-shadow(0 0 12px #ffea00); transform: scale(1.1); }
+            100% { opacity: 1; filter: drop-shadow(0 0 10px #ffea00); transform: scale(1.1); }
         }
 
-        @keyframes neonFlicker {
-            0%, 94%, 96%, 100% { 
-                opacity: 1; 
-                filter: drop-shadow(0 0 4px #ff007f) drop-shadow(0 0 10px #ff007f); 
-            }
-            95%, 97% { 
-                opacity: 0.1; /* Dead bulb state */
-                filter: none; 
-            }
+        /* Independent Color Flicker Animations */
+        @keyframes neonFlickerCyan {
+            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #00f0ff); }
+            95%, 97% { opacity: 0.3; filter: none; }
+        }
+
+        @keyframes neonFlickerPink {
+            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 8px #ff007f); }
+            95%, 97% { opacity: 0.3; filter: none; }
         }
