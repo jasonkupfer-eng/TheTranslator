@@ -118,7 +118,7 @@ transform-origin: center center;
 }
 
         /* ========================================================
-           INTERACTIVE CONTROL DECK (TRUE MOCKUP ALIGNMENT)
+           INTERACTIVE CONTROL DECK (100% PHOTOSHOP ACCURATE)
            ======================================================== */
         .control-deck {
           position: absolute;
@@ -146,29 +146,28 @@ transform-origin: center center;
           transform: translate(-50%, calc(-50% + 4px));
         }
 
-        /* --- GROUP 1: TOP ROW (Y: 73.5%) --- */
+        /* --- Master Action Buttons (Top Row) --- */
         /* Left Cluster */
-        .load-btn    { background-image: url('LOAD-UP.png');    top: 73.5%; left: 38.5%; width: 2.8%; aspect-ratio: 1 / 1; }
-        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 73.5%; left: 42.0%; width: 2.8%; aspect-ratio: 1 / 1; }
+        .load-btn    { background-image: url('LOAD-UP.png');    top: 75.85%; left: 32.00%; width: 3.16%; aspect-ratio: 1 / 1; }
+        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 75.85%; left: 35.90%; width: 3.18%; aspect-ratio: 1 / 1; }
         
-        /* Right Cluster (Top Half) */
-        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 73.5%; left: 58.0%; width: 2.8%; aspect-ratio: 1 / 1; }
-        .reset-btn   { background-image: url('RESET-UP.png');   top: 73.5%; left: 61.5%; width: 2.8%; aspect-ratio: 1 / 1; }
+        /* Right Cluster */
+        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 75.85%; left: 58.28%; width: 3.16%; aspect-ratio: 1 / 1; }
+        .reset-btn   { background-image: url('RESET-UP.png');   top: 75.85%; left: 64.63%; width: 3.16%; aspect-ratio: 1 / 1; }
 
-        /* --- GROUP 2: MIDDLE DIP (Y: 76.5%) --- */
-        /* Center Calibrators */
-        .plus-btn  { background-image: url('+-UP.png');     top: 76.5%; left: 48.0%;  width: 2.4%; aspect-ratio: 1 / 1; }
-        .minus-btn { background-image: url('--UP.png');     top: 76.5%; left: 51.5%;  width: 2.4%; aspect-ratio: 1 / 1; }
-        
-        /* Right Cluster (Bottom Half) */
-        .hq-btn    { background-image: url('ARCADE-UP.png'); top: 76.5%; left: 59.75%; width: 2.8%; aspect-ratio: 1 / 1; }
+        /* --- Timecode Calibrators (Middle Dip, Swapped) --- */
+        .minus-btn   { background-image: url('--UP.png');       top: 74.74%; left: 46.18%; width: 2.69%; aspect-ratio: 1 / 1; }
+        .plus-btn    { background-image: url('+-UP.png');       top: 74.87%; left: 50.49%; width: 2.71%; aspect-ratio: 1 / 1; }
 
-        /* --- GROUP 3: BOTTOM ROW (Y: 80.5%) --- */
-        .srt-btn  { background-image: url('SRT-UP.png');  top: 80.5%; left: 44.0%; width: 2.8%; aspect-ratio: 1 / 1; }
-        .vtt-btn  { background-image: url('VTT-UP.png');  top: 80.5%; left: 47.0%; width: 2.8%; aspect-ratio: 1 / 1; }
-        .ttml-btn { background-image: url('TTML-UP.png'); top: 80.5%; left: 50.0%; width: 2.8%; aspect-ratio: 1 / 1; } /* Center */
-        .txt-btn  { background-image: url('TXT-UP.png');  top: 80.5%; left: 53.0%; width: 2.4%; aspect-ratio: 1 / 1; }
-        .xml-btn  { background-image: url('XML-UP.png');  top: 80.5%; left: 56.0%; width: 2.4%; aspect-ratio: 1 / 1; }
+        /* --- Format Buttons (Bottom Row) --- */
+        .srt-btn  { background-image: url('SRT-UP.png');  top: 79.07%; left: 39.08%; width: 4.07%; aspect-ratio: 1 / 1; }
+        .vtt-btn  { background-image: url('VTT-UP.png');  top: 79.20%; left: 43.48%; width: 4.05%; aspect-ratio: 1 / 1; }
+        .ttml-btn { background-image: url('TTML-UP.png'); top: 79.30%; left: 47.80%; width: 4.03%; aspect-ratio: 1 / 1; } 
+        .txt-btn  { background-image: url('TXT-UP.png');  top: 79.88%; left: 52.31%; width: 2.67%; aspect-ratio: 1 / 1; }
+        .xml-btn  { background-image: url('XML-UP.png');  top: 79.88%; left: 55.72%; width: 2.71%; aspect-ratio: 1 / 1; }
+
+        /* --- The Arcade Return Button --- */
+        .hq-btn   { background-image: url('ARCADE-UP.png'); top: 79.30%; left: 61.45%; width: 3.18%; aspect-ratio: 1 / 1; }
 
 
 /* ========================================================
