@@ -167,3 +167,90 @@ transform-origin: center center;
         .c-btn-2 { top: 73.5%; left: 50.5%; width: 1.5%; height: 2.5%; }
         
         .hidden { display: none !important; }
+
+/* ========================================================
+           MARQUEE STYLING & ANIMATIONS
+           ======================================================== */
+        .marquee-zone {
+            position: absolute;
+            z-index: 4; 
+            
+            /* Coordinates mapped precisely to the new cabinet's marquee box */
+            top: 10.5%;
+            left: 31%;
+            width: 38%;
+            height: 9%;
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            box-sizing: border-box;
+        }
+
+        .marquee-star {
+            height: 40%; /* Auto-scales the stars based on the box height */
+            width: auto;
+            filter: drop-shadow(0 0 8px #ffea00);
+            animation: starTwinkle 1.5s infinite alternate;
+        }
+        
+        /* Desync the stars so they blink independently */
+        .star-left { animation-delay: 0.3s; }
+        .star-right { animation-delay: 0.8s; }
+
+        .marquee-text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 80%;
+            gap: 5%;
+        }
+
+        .marquee-row {
+            display: flex;
+            justify-content: center;
+            height: 40%; /* Locks the letters to a uniform height */
+            gap: 2px;
+        }
+
+        .marquee-top { height: 30%; } /* Makes the top text slightly smaller */
+        
+        .space { width: 1.5vw; } /* The physical space between words */
+
+        .m-let {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            /* Applies a heavy CSS glow to the PNGs */
+            filter: drop-shadow(0 0 4px #ff007f) drop-shadow(0 0 10px #ff007f);
+            animation: neonFlicker 3s infinite;
+        }
+
+        /* 
+           The Randomized Flicker Engine
+           By staggering these delays, the letters will randomly blink out 
+           at different times, creating a highly realistic broken neon effect.
+        */
+        .m-let:nth-child(2n) { animation-delay: 0.1s; animation-duration: 4s; }
+        .m-let:nth-child(3n) { animation-delay: 1.4s; animation-duration: 2s; }
+        .m-let:nth-child(5n) { animation-delay: 0.8s; animation-duration: 3.5s; }
+        .m-let:nth-child(7n) { animation-delay: 2.1s; animation-duration: 2.5s; }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.4; filter: drop-shadow(0 0 2px #ffea00); transform: scale(0.9); }
+            100% { opacity: 1; filter: drop-shadow(0 0 12px #ffea00); transform: scale(1.1); }
+        }
+
+        @keyframes neonFlicker {
+            0%, 94%, 96%, 100% { 
+                opacity: 1; 
+                filter: drop-shadow(0 0 4px #ff007f) drop-shadow(0 0 10px #ff007f); 
+            }
+            95%, 97% { 
+                opacity: 0.1; /* Dead bulb state */
+                filter: none; 
+            }
+        }
