@@ -147,22 +147,22 @@ transform-origin: center center;
         }
 
         /* Master Action Buttons (Row 1) */
-        .load-btn    { background-image: url('LOAD-UP.png');    top: 71%; left: 31.25%; width: 5.5%; height: 8%; }
-        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 71%; left: 39.25%; width: 5.5%; height: 8%; }
-        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 71%; left: 47.25%; width: 5.5%; height: 8%; } /* Dead Center */
-        .reset-btn   { background-image: url('RESET-UP.png');   top: 71%; left: 55.25%; width: 5.5%; height: 8%; }
-        .hq-btn      { background-image: url('ARCADE-UP.png');  top: 71%; left: 63.25%; width: 5.5%; height: 8%; }
+        .load-btn    { background-image: url('LOAD-UP.png');    top: 74.5%; left: 33.25%; width: 5.5%; height: 8%; }
+        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 74.5%; left: 40.25%; width: 5.5%; height: 8%; }
+        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 74.5%; left: 47.25%; width: 5.5%; height: 8%; } /* Center */
+        .reset-btn   { background-image: url('RESET-UP.png');   top: 74.5%; left: 54.25%; width: 5.5%; height: 8%; }
+        .hq-btn      { background-image: url('ARCADE-UP.png');  top: 74.5%; left: 61.25%; width: 5.5%; height: 8%; }
 
         /* Timecode Calibrators (Row 2) */
-        .minus-btn { background-image: url('--UP.png'); top: 78.5%; left: 44.5%; width: 3.5%; height: 5.5%; }
-        .plus-btn  { background-image: url('+-UP.png'); top: 78.5%; left: 52%;   width: 3.5%; height: 5.5%; }
+        .minus-btn { background-image: url('--UP.png'); top: 78.5%; left: 46%;   width: 3.5%; height: 5.5%; }
+        .plus-btn  { background-image: url('+-UP.png'); top: 78.5%; left: 50.5%; width: 3.5%; height: 5.5%; }
 
         /* Format Buttons (Row 3) */
-        .srt-btn  { background-image: url('SRT-UP.png');  top: 85%; left: 33.75%; width: 4.5%; height: 6.5%; }
-        .vtt-btn  { background-image: url('VTT-UP.png');  top: 85%; left: 40.75%; width: 4.5%; height: 6.5%; }
-        .ttml-btn { background-image: url('TTML-UP.png'); top: 85%; left: 47.75%; width: 4.5%; height: 6.5%; } /* Dead Center */
-        .xml-btn  { background-image: url('XML-UP.png');  top: 85%; left: 54.75%; width: 4.5%; height: 6.5%; }
-        .txt-btn  { background-image: url('TXT-UP.png');  top: 85%; left: 61.75%; width: 4.5%; height: 6.5%; }
+        .srt-btn  { background-image: url('SRT-UP.png');  top: 81.5%; left: 35.75%; width: 4.5%; height: 6.5%; }
+        .vtt-btn  { background-image: url('VTT-UP.png');  top: 81.5%; left: 41.75%; width: 4.5%; height: 6.5%; }
+        .ttml-btn { background-image: url('TTML-UP.png'); top: 81.5%; left: 47.75%; width: 4.5%; height: 6.5%; } /* Center */
+        .xml-btn  { background-image: url('XML-UP.png');  top: 81.5%; left: 53.75%; width: 4.5%; height: 6.5%; }
+        .txt-btn  { background-image: url('TXT-UP.png');  top: 81.5%; left: 59.75%; width: 4.5%; height: 6.5%; }
 
 
 /* ========================================================
