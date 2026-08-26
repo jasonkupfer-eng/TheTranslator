@@ -174,33 +174,32 @@ transform-origin: center center;
         .marquee-zone {
             position: absolute;
             z-index: 4; 
-            top: 10.5%;
+            top: 10%;
             left: 31%;
             width: 38%;
-            height: 9%;
+            height: 9.5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 3%;
+            padding: 0 4%;
             box-sizing: border-box;
         }
 
-        /* The Framing Bars */
+        /* The Framing Bars (Fixed height prevents squishing!) */
         .neon-bar {
             position: absolute;
-            left: 2%;
-            width: 96%;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 6px #ff5500) drop-shadow(0 0 2px #fff);
+            left: 3%;
+            width: 94%;
+            height: 5px; 
+            object-fit: fill; 
             z-index: 1;
         }
-        .neon-top { top: 2%; }
-        .neon-bottom { bottom: 2%; }
+        .neon-top { top: 0px; filter: drop-shadow(0 0 5px #00f0ff); }
+        .neon-bottom { bottom: 0px; filter: drop-shadow(0 0 5px #ff007f); }
 
         /* The Stars */
         .marquee-star {
-            height: 30%; 
+            height: 35%; 
             width: auto;
             filter: drop-shadow(0 0 6px #ffea00);
             animation: starTwinkle 1.5s infinite alternate;
@@ -216,9 +215,9 @@ transform-origin: center center;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80%; /* Shrunk slightly to give the neon bars breathing room */
-            width: 85%;
-            gap: 8%;   /* Space between top and bottom lines */
+            width: 100%;
+            height: 100%;
+            gap: 2px;
             z-index: 2;
         }
 
@@ -226,42 +225,35 @@ transform-origin: center center;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 45%; 
-        }
-
-        .marquee-top { 
-            height: 30%; 
-            gap: 1.5vw; /* The physical space between the words 'THE' and 'SUBTITLE' */
+            gap: 1.5vw; /* The physical space between the words */
         }
         
-        .m-word {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
+        .m-word { display: flex; }
 
+        /* THE CSS NEON TUBE FONT EFFECT */
         .m-let {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-            display: block;
-            /* THE KERNING FIX: Negative margins pull the letters tightly together */
-            margin: 0 -0.1vw; 
+            font-family: 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            color: transparent; /* Makes the inside of the letter hollow */
+            letter-spacing: 2px;
             animation-duration: 3s;
             animation-iteration-count: infinite;
         }
 
-        /* --- THE COLOR SPLIT --- */
-        /* Top Row: Cyan Glow */
+        /* Top Row: Cyan Glow & Outline */
         .marquee-top .m-let {
-            filter: drop-shadow(0 0 6px #00f0ff);
+            font-size: 1.1vw;
+            -webkit-text-stroke: 1.5px #00f0ff; 
+            filter: drop-shadow(0 0 4px #00f0ff);
             animation-name: neonFlickerCyan;
         }
 
-        /* Bottom Row: Pink Glow */
+        /* Bottom Row: Pink Glow & Outline */
         .marquee-bottom .m-let {
-            filter: drop-shadow(0 0 8px #ff007f);
+            font-size: 1.8vw;
+            -webkit-text-stroke: 2px #ff007f;
+            filter: drop-shadow(0 0 5px #ff007f);
             animation-name: neonFlickerPink;
         }
 
@@ -278,11 +270,11 @@ transform-origin: center center;
 
         /* Independent Color Flicker Animations */
         @keyframes neonFlickerCyan {
-            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #00f0ff); }
-            95%, 97% { opacity: 0.3; filter: none; }
+            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 4px #00f0ff); }
+            95%, 97% { opacity: 0.2; filter: none; }
         }
 
         @keyframes neonFlickerPink {
-            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 8px #ff007f); }
-            95%, 97% { opacity: 0.3; filter: none; }
+            0%, 94%, 96%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #ff007f); }
+            95%, 97% { opacity: 0.2; filter: none; }
         }
