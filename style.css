@@ -118,7 +118,7 @@ transform-origin: center center;
 }
 
         /* ========================================================
-           INTERACTIVE CONTROL DECK (PHOTOSHOP MATCHED)
+           INTERACTIVE CONTROL DECK (TRUE MOCKUP ALIGNMENT)
            ======================================================== */
         .control-deck {
           position: absolute;
@@ -146,25 +146,29 @@ transform-origin: center center;
           transform: translate(-50%, calc(-50% + 4px));
         }
 
-        /* Master Action Buttons (Top Row: 77.8%) */
+        /* --- GROUP 1: TOP ROW (Y: 73.5%) --- */
         /* Left Cluster */
-        .load-btn    { background-image: url('LOAD-UP.png');    top: 77.8%; left: 34.0%; width: 3.3%; aspect-ratio: 1 / 1; }
-        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 77.8%; left: 38.1%; width: 3.3%; aspect-ratio: 1 / 1; }
-        /* Right Cluster */
-        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 77.8%; left: 61.8%; width: 3.3%; aspect-ratio: 1 / 1; }
-        .hq-btn      { background-image: url('ARCADE-UP.png');  top: 77.8%; left: 65.9%; width: 3.3%; aspect-ratio: 1 / 1; }
-        .reset-btn   { background-image: url('RESET-UP.png');   top: 77.8%; left: 70.1%; width: 3.3%; aspect-ratio: 1 / 1; }
+        .load-btn    { background-image: url('LOAD-UP.png');    top: 73.5%; left: 38.5%; width: 2.8%; aspect-ratio: 1 / 1; }
+        .ignore-btn  { background-image: url('IGNORE-UP.png');  top: 73.5%; left: 42.0%; width: 2.8%; aspect-ratio: 1 / 1; }
+        
+        /* Right Cluster (Top Half) */
+        .execute-btn { background-image: url('EXECUTE-UP.png'); top: 73.5%; left: 58.0%; width: 2.8%; aspect-ratio: 1 / 1; }
+        .reset-btn   { background-image: url('RESET-UP.png');   top: 73.5%; left: 61.5%; width: 2.8%; aspect-ratio: 1 / 1; }
 
-        /* Timecode Calibrators (Middle: 75%) */
-        .plus-btn  { background-image: url('--UP.png'); top: 75.0%; left: 48.2%; width: 2.6%; aspect-ratio: 1 / 1; }
-        .minus-btn { background-image: url('+-UP.png'); top: 75.0%; left: 51.8%; width: 2.6%; aspect-ratio: 1 / 1; }
+        /* --- GROUP 2: MIDDLE DIP (Y: 76.5%) --- */
+        /* Center Calibrators */
+        .plus-btn  { background-image: url('+-UP.png');     top: 76.5%; left: 48.0%;  width: 2.4%; aspect-ratio: 1 / 1; }
+        .minus-btn { background-image: url('--UP.png');     top: 76.5%; left: 51.5%;  width: 2.4%; aspect-ratio: 1 / 1; }
+        
+        /* Right Cluster (Bottom Half) */
+        .hq-btn    { background-image: url('ARCADE-UP.png'); top: 76.5%; left: 59.75%; width: 2.8%; aspect-ratio: 1 / 1; }
 
-        /* Format Buttons (Bottom Row: 81.8%) */
-        .srt-btn  { background-image: url('SRT-UP.png');  top: 81.8%; left: 41.0%; width: 3.3%; aspect-ratio: 1 / 1; }
-        .vtt-btn  { background-image: url('VTT-UP.png');  top: 81.8%; left: 45.5%; width: 3.3%; aspect-ratio: 1 / 1; }
-        .ttml-btn { background-image: url('TTML-UP.png'); top: 81.8%; left: 50.0%; width: 3.3%; aspect-ratio: 1 / 1; } /* Center */
-        .txt-btn  { background-image: url('TXT-UP.png');  top: 81.8%; left: 54.5%; width: 2.6%; aspect-ratio: 1 / 1; }
-        .xml-btn  { background-image: url('XML-UP.png');  top: 81.8%; left: 59.0%; width: 2.6%; aspect-ratio: 1 / 1; }
+        /* --- GROUP 3: BOTTOM ROW (Y: 80.5%) --- */
+        .srt-btn  { background-image: url('SRT-UP.png');  top: 80.5%; left: 44.0%; width: 2.8%; aspect-ratio: 1 / 1; }
+        .vtt-btn  { background-image: url('VTT-UP.png');  top: 80.5%; left: 47.0%; width: 2.8%; aspect-ratio: 1 / 1; }
+        .ttml-btn { background-image: url('TTML-UP.png'); top: 80.5%; left: 50.0%; width: 2.8%; aspect-ratio: 1 / 1; } /* Center */
+        .txt-btn  { background-image: url('TXT-UP.png');  top: 80.5%; left: 53.0%; width: 2.4%; aspect-ratio: 1 / 1; }
+        .xml-btn  { background-image: url('XML-UP.png');  top: 80.5%; left: 56.0%; width: 2.4%; aspect-ratio: 1 / 1; }
 
 
 /* ========================================================
