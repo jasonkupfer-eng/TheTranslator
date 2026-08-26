@@ -28,7 +28,7 @@ body {
         .arcade-wrapper {
           position: relative;
           width: 100%; 
-          aspect-ratio: 16 / 9; /* Locks the widescreen ratio */
+          aspect-ratio: 5504 / 3072; /* THE PIXEL-PERFECT FIX */
           margin: 0; 
         }
 
