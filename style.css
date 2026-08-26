@@ -156,8 +156,8 @@ transform-origin: center center;
         .reset-btn   { background-image: url('RESET-UP.png');   top: 77.8%; left: 70.1%; width: 3.3%; aspect-ratio: 1 / 1; }
 
         /* Timecode Calibrators (Middle: 75%) */
-        .plus-btn  { background-image: url('+-UP.png'); top: 75.0%; left: 48.2%; width: 2.6%; aspect-ratio: 1 / 1; }
-        .minus-btn { background-image: url('--UP.png'); top: 75.0%; left: 51.8%; width: 2.6%; aspect-ratio: 1 / 1; }
+        .plus-btn  { background-image: url('--UP.png'); top: 75.0%; left: 48.2%; width: 2.6%; aspect-ratio: 1 / 1; }
+        .minus-btn { background-image: url('+-UP.png'); top: 75.0%; left: 51.8%; width: 2.6%; aspect-ratio: 1 / 1; }
 
         /* Format Buttons (Bottom Row: 81.8%) */
         .srt-btn  { background-image: url('SRT-UP.png');  top: 81.8%; left: 41.0%; width: 3.3%; aspect-ratio: 1 / 1; }
