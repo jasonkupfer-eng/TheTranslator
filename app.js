@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.save();
         ctx.beginPath();
         // THE FIX: Horizon lowered to exactly 73.2% to match the grid
-        ctx.rect(0, 0, cw, ch * 0.69); 
+        ctx.rect(0, 0, cw, ch * 0.70); 
         ctx.clip();
 
         // Draw Twinkling Stars (With Glow)
