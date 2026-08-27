@@ -33,8 +33,6 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        
-        /* THE SCALE FIX: Maximizes size without overflowing height */
         width: 100%;
         max-width: calc((100vh - 4vh - 24px) * (5504 / 3072)); 
     }
@@ -49,31 +47,29 @@ body {
     }
 
     /* --- THE LAYER SANDWICH --- */
+    /* LAYER 0: Background */
     .space-bg-layer {
       position: absolute; z-index: 0;
       top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; 
       pointer-events: none;
     }
 
+    /* LAYER 1: Cosmos Canvas */
     .cosmos-canvas-layer {
-      position: absolute; z-index: 1; /* In front of space, behind CRT */
+      position: absolute; z-index: 1;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
     }
 
-    /* ========================================================
-       LAYER 2: CRT Text Content
-       ======================================================== */
+    /* LAYER 2: CRT Screen (Behind Cabinet) */
     .crt-content {
       position: absolute;
-      z-index: 2; /* Sits BEHIND the cabinet layer! */
-      
-      /* EXPANDED BOUNDARIES: Forces sharp corners behind the bezel */
+      z-index: 2; 
       top: 30%;    
       left: 31%;
       width: 38%;
       height: 34%;
-      
       background-color: #020604; 
       box-sizing: border-box;
       overflow: hidden;
@@ -84,7 +80,6 @@ body {
       transform-origin: center center;
       animation: 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards crtTurnOn;
       opacity: 0; 
-      
       container-type: inline-size; 
     }
 
@@ -94,30 +89,41 @@ body {
       100% { transform: scale(1, 1); opacity: 1; }
     }
 
-    /* THE BULLETPROOF FIX: The cabinet is now Layer 3 */
+    /* LAYER 3: Cabinet Cutout */
     .cabinet-layer {
-      position: relative; z-index: 3; /* Traps the CRT behind the glass */
+      position: relative; z-index: 3; 
       display: block;
       width: 100%; height: auto;
       pointer-events: none; 
     }
 
-    /* ========================================================
-       FULL-CANVAS MARQUEE STACK
-       ======================================================== */
+    /* LAYER 4: Marquee Stack */
     .full-canvas-marquee {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        z-index: 4; /* Pushed up */
+        z-index: 4;
         pointer-events: none; 
     }
     .marquee-full-layer {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
+        object-fit: cover; 
     }
 
+    /* LAYER 5: Interactive Deck */
+    .control-deck {
+      position: absolute;
+      z-index: 5;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    /* ========================================================
+       ANIMATIONS & BUTTONS
+       ======================================================== */
     .m-flicker { animation: neonFlicker 3s infinite; }
     .delay-1 { animation-delay: 0.1s; animation-duration: 4s; }
     .delay-2 { animation-delay: 1.5s; animation-duration: 2.2s; }
@@ -136,9 +142,7 @@ body {
         100% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 5px #ffea00); }
     }
 
-    /* ========================================================
-       STATE 0 CRT TYPOGRAPHY
-       ======================================================== */
+    /* --- STATE 0 CRT TYPOGRAPHY --- */
     .crt-state {
         display: none;
         flex-direction: column;
@@ -153,7 +157,7 @@ body {
     .attract-title {
         font-family: 'Press Start 2P', monospace;
         color: #00f0ff;
-        font-size: 4.5cqw; /* Adjusted for the wider box */
+        font-size: 4.5cqw; 
         margin: 0 0 4% 0;
         text-shadow: 0 0 10px #00f0ff;
         white-space: nowrap;
@@ -176,21 +180,11 @@ body {
         text-shadow: 0 0 15px #39ff14;
         pointer-events: auto; 
     }
-    
+
     .blink { animation: blinker 1s linear infinite; }
     @keyframes blinker { 50% { opacity: 0; } }
 
-    /* ========================================================
-       LAYER 4: INTERACTIVE CONTROL DECK
-       ======================================================== */
-    .control-deck {
-      position: absolute;
-      z-index: 5;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none; /* Let clicks pass through empty space */
-    }
-
+    /* --- DECK BUTTONS --- */
     .arcade-btn {
       position: absolute;
       background-size: contain;
@@ -201,14 +195,13 @@ body {
       cursor: pointer;
       outline: none;
       transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: auto; /* Re-enable clicks strictly on buttons */
+      pointer-events: auto; 
     }
 
     .arcade-btn:active {
       transform: translateY(4px);
     }
 
-    /* Buttons Map */
     .load-btn    { background-image: url('LOAD-UP.png');    left: 31.99%; top: 75.85%; width: 3.16%; height: 5.60%; }
     .ignore-btn  { background-image: url('IGNORE-UP.png');  left: 35.90%; top: 75.85%; width: 3.18%; height: 5.57%; }
     .execute-btn { background-image: url('EXECUTE-UP.png'); left: 58.28%; top: 75.85%; width: 3.16%; height: 5.57%; }
