@@ -69,18 +69,20 @@ body {
       position: absolute;
       z-index: 2; 
       
-      /* MASSIVE SYMMETRICAL BLEED: Center stays at Y:46%, floor drops to 70% */
-      top: 22%;    
-      left: 30%;
-      width: 40%;
-      height: 48%;
+      /* SURGICAL BOUNDS: Fits the glass perfectly and drops the floor without bleeding out the sides */
+      top: 31%;    
+      left: 34%;
+      width: 32%;
+      height: 35%;
       
       background-color: #020604; 
       box-sizing: border-box;
       
-      border-radius: 24px;
-      box-shadow: 0 0 0 1vw #020604;
+      /* Soft rounding and gentle shadow to fill sub-pixel gaps without bleeding into space */
+      border-radius: 20px;
+      box-shadow: 0 0 10px 5px #020604;
       
+      /* THE FIX: Removed 'overflow: hidden' so the text never gets chopped off! */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -166,7 +168,7 @@ body {
     .attract-title {
         font-family: 'Press Start 2P', monospace;
         color: #00f0ff;
-        font-size: 4cqw; /* Adjusted for the new 33% wrapper width */
+        font-size: 5.5cqw; /* Re-scaled for perfect fit */
         margin: 0 0 4% 0;
         text-shadow: 0 0 10px #00f0ff;
         white-space: nowrap;
@@ -175,7 +177,7 @@ body {
     .attract-sub {
         font-family: 'VT323', monospace;
         color: #fff;
-        font-size: 5.5cqw; 
+        font-size: 6cqw; 
         margin: 0 0 2% 0;
         white-space: nowrap;
     }
@@ -184,12 +186,12 @@ body {
     .arcade-start-text {
         font-family: 'Press Start 2P', monospace;
         color: #39ff14;
-        font-size: 7.5cqw; 
+        font-size: 9cqw; 
         cursor: pointer;
         text-shadow: 0 0 15px #39ff14;
         pointer-events: auto; 
     }
-
+    
     .blink { animation: blinker 1s linear infinite; }
     @keyframes blinker { 50% { opacity: 0; } }
 
