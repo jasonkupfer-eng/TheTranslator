@@ -69,16 +69,15 @@ body {
       position: absolute;
       z-index: 2; 
       
-      /* THE PERFECT SYMMETRICAL BLEED: Centered exactly at X:50%, Y:46% */
-      top: 27%;    
-      left: 32%;
-      width: 36%;
-      height: 38%;
+      /* MASSIVE SYMMETRICAL BLEED: Center stays at Y:46%, floor drops to 70% */
+      top: 22%;    
+      left: 30%;
+      width: 40%;
+      height: 48%;
       
       background-color: #020604; 
       box-sizing: border-box;
       
-      /* Softens the edges and bleeds the color out 1 viewport width to kill sub-pixel gaps */
       border-radius: 24px;
       box-shadow: 0 0 0 1vw #020604;
       
