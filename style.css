@@ -44,15 +44,16 @@ body {
         border-radius: 8px;
         overflow: hidden; 
         background-color: #0b0213;
-        isolation: isolate; /* Forces browser to respect z-index bounds */
+        aspect-ratio: 5504 / 3072; /* FORCES THE BOX OPEN */
+        isolation: isolate; 
     }
 
     /* --- THE LAYER SANDWICH --- */
+    
     /* LAYER 0: Background */
     .space-bg-layer {
       position: absolute; z-index: 0;
       top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; 
       pointer-events: none;
     }
 
@@ -63,14 +64,18 @@ body {
       pointer-events: none;
     }
 
-    /* LAYER 2: CRT Screen (Physically Behind Cabinet) */
+    /* LAYER 2: CRT Screen (Massively Expanded) */
     .crt-content {
       position: absolute;
       z-index: 2; 
-      top: 30%;    
-      left: 31%;
-      width: 38%;
-      height: 34%;
+      
+      /* THE FIX: Huge bounds to bury the corners behind the solid plastic */
+      top: 23%;    
+      left: 23%;
+      width: 48%;
+      height: 48%;
+      border-radius: 40px; 
+      
       background-color: #020604; 
       box-sizing: border-box;
       overflow: hidden;
@@ -92,9 +97,8 @@ body {
 
     /* LAYER 3: Cabinet Cutout */
     .cabinet-layer {
-      position: relative; z-index: 3; 
-      display: block;
-      width: 100%; height: auto;
+      position: absolute; z-index: 3; 
+      top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; 
     }
 
@@ -106,11 +110,11 @@ body {
         z-index: 4;
         pointer-events: none; 
     }
+    
     .marquee-full-layer {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        object-fit: cover; 
     }
 
     /* LAYER 5: Interactive Deck */
@@ -158,7 +162,7 @@ body {
     .attract-title {
         font-family: 'Press Start 2P', monospace;
         color: #00f0ff;
-        font-size: 4.5cqw; 
+        font-size: 3.5cqw; 
         margin: 0 0 4% 0;
         text-shadow: 0 0 10px #00f0ff;
         white-space: nowrap;
@@ -167,7 +171,7 @@ body {
     .attract-sub {
         font-family: 'VT323', monospace;
         color: #fff;
-        font-size: 5cqw; 
+        font-size: 4cqw; 
         margin: 0 0 2% 0;
         white-space: nowrap;
     }
@@ -176,7 +180,7 @@ body {
     .arcade-start-text {
         font-family: 'Press Start 2P', monospace;
         color: #39ff14;
-        font-size: 7.5cqw; 
+        font-size: 6cqw; 
         cursor: pointer;
         text-shadow: 0 0 15px #39ff14;
         pointer-events: auto; 
