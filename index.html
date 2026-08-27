@@ -123,32 +123,18 @@
             <!-- THE ARCADE CONVERTER -->
             <div class="arcade-wrapper">
                 
-                <!-- LAYER 1 (BOTTOM): The CRT Text -->
-                <div class="crt-content">
-                  <div class="inner-scanlines"></div>
-                  
-                  <div class="crt-header">
-                      <h2>A.C.E. ONLINE</h2>
-                      <p class="offset-display" id="timeOffsetDisplay">OFFSET: +0.0s</p>
-                  </div>
-                  
-                  <div class="crt-body" id="dropZone">
-                      <p class="blink" style="color: #fff;">> AWAITING SUBTITLE PAYLOAD...</p>
-                      <p style="opacity: 0.7; margin-top: 20px;">[ CLICK LEFT JOYSTICK TO UPLOAD ]</p>
-                  </div>
-                  
-                  <div class="crt-body hidden" id="qcReport">
-                     <!-- JS will inject diagnostic data here -->
-                  </div>
-                  
-                </div>
+                <!-- LAYER 0: Deep Space Background -->
+                <img src="deep-space-bg.jpg" class="space-bg-layer" alt="Deep Space">
+                
+                <!-- LAYER 1: The Cosmos Canvas (Stars, Planets, UFOs) -->
+                <canvas id="cosmosCanvas" class="cosmos-canvas-layer"></canvas>
 
-                <!-- LAYER 2 (MIDDLE): The Cabinet Image as a True HTML Element -->
-                <img src="Screen.png" class="cabinet-layer" alt="Cabinet Deck">
+                <!-- LAYER 2: The Transparent Cabinet Image -->
+                <img src="cabinet-cutout.png" class="cabinet-layer" alt="Cabinet Deck">
 
                 <!-- LAYER 2.5: The Full-Canvas Marquee Stack -->
                 <div class="full-canvas-marquee">
-                    <!-- Base Marquee (JPG with black background erased by CSS blend mode) -->
+                    <!-- Base Marquee -->
                     <img src="marquee.png" class="marquee-full-layer" alt="Marquee Base">
                     
                     <!-- The Animated Letters -->
@@ -157,11 +143,28 @@
                     <img src="L.png" class="marquee-full-layer m-flicker delay-3" alt="L">
                     <img src="C.png" class="marquee-full-layer m-flicker delay-4" alt="C">
                     
-                    <!-- The Animated Star -->
-                    <img src="RightStar.png" class="marquee-full-layer star-twinkle" alt="*">
+                    <!-- THE FIX: Updated to star-right -->
+                    <img src="RightStar.png" class="marquee-full-layer star-right" alt="*">
                 </div>
 
-                <!-- LAYER 3 (TOP): The Interactive Control Deck -->
+                <!-- LAYER 3: The CRT Screen -->
+                <div class="crt-content">
+                  <div class="inner-scanlines"></div>
+                  
+                  <!-- STATE 0: Attract Mode (Boot Up) -->
+                  <div class="crt-state active-state" id="state0-attract">
+                      <h2 class="attract-title">THE TRANSLATOR</h2>
+                      <p class="attract-sub">CONVERT SUBTITLE FILES</p>
+                      <p class="attract-sub pink">- NO CREDITS REQUIRED -</p>
+                      
+                      <div class="start-btn-container">
+                          <span class="arcade-start-text blink">START</span>
+                      </div>
+                  </div>
+                  
+                </div>
+
+                <!-- LAYER 4: The Interactive Control Deck -->
                 <div class="control-deck">
                   
                   <!-- Master Actions -->
