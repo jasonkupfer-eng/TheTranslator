@@ -69,21 +69,14 @@ body {
       position: absolute;
       z-index: 2; 
       
-      /* RESTORED EXACT CENTER COORDINATES */
-      top: 33.2%;    
-      left: 36.1%;
-      width: 27.8%;
-      height: 25.5%;
+      /* EXACT SYMMETRICAL BLEED: Expanded 2% outward from the original 29x26 core */
+      top: 31%;    
+      left: 33.5%;
+      width: 33%;
+      height: 30%;
       
       background-color: #020604; 
       box-sizing: border-box;
-      
-      /* THE MAGIC FIX: Rounds the corners and bleeds the black background out JUST enough to tuck under the plastic bezel, without sticking out of the machine! */
-      border-radius: 30px;
-      box-shadow: 0 0 0 1vw #020604;
-      
-      /* Allows text glow to bleed without getting chopped off by invisible scissors */
-      overflow: visible; 
       
       display: flex;
       flex-direction: column;
@@ -92,6 +85,7 @@ body {
       transform-origin: center center;
       animation: 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards crtTurnOn;
       opacity: 0; 
+      
       container-type: inline-size; 
     }
 
@@ -169,7 +163,7 @@ body {
     .attract-title {
         font-family: 'Press Start 2P', monospace;
         color: #00f0ff;
-        font-size: 7cqw; 
+        font-size: 4cqw; /* Adjusted for the new 33% wrapper width */
         margin: 0 0 4% 0;
         text-shadow: 0 0 10px #00f0ff;
         white-space: nowrap;
@@ -178,7 +172,7 @@ body {
     .attract-sub {
         font-family: 'VT323', monospace;
         color: #fff;
-        font-size: 7.5cqw; 
+        font-size: 5.5cqw; 
         margin: 0 0 2% 0;
         white-space: nowrap;
     }
@@ -187,7 +181,7 @@ body {
     .arcade-start-text {
         font-family: 'Press Start 2P', monospace;
         color: #39ff14;
-        font-size: 10cqw; 
+        font-size: 7.5cqw; 
         cursor: pointer;
         text-shadow: 0 0 15px #39ff14;
         pointer-events: auto; 
