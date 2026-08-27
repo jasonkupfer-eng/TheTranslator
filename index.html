@@ -12,85 +12,78 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Link strictly to your CSS file -->
-    <link rel="stylesheet" href="style_3.css">
+    <!-- Link strictly to your CSS file (Update name if needed!) -->
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="screen-wrapper">
-    <div class="arcade-cabinet">
+    <!-- THE ARCADE CONVERTER -->
+    <div class="arcade-wrapper">
         
-        <div class="crt-screen" style="display: flex; justify-content: center; align-items: center; background-color: #0b0213; padding: 0; overflow: hidden;">
+        <!-- LAYER 0: Deep Space Background (Fixed lowercase 'b') -->
+        <img src="background.png" class="space-bg-layer" alt="">
+        
+        <!-- LAYER 1: The Cosmos Canvas (Stars, Planets, UFOs) -->
+        <canvas id="cosmosCanvas" class="cosmos-canvas-layer"></canvas>
+
+        <!-- LAYER 2: The Transparent Cabinet Image -->
+        <img src="cabinet-cutout.png" class="cabinet-layer" alt="Cabinet Deck">
+
+        <!-- LAYER 2.5: The Full-Canvas Marquee Stack -->
+        <div class="full-canvas-marquee">
+            <img src="marquee.png" class="marquee-full-layer" alt="Marquee Base">
+            <img src="T.png" class="marquee-full-layer m-flicker delay-1" alt="T">
+            <img src="B.png" class="marquee-full-layer m-flicker delay-2" alt="B">
+            <img src="L.png" class="marquee-full-layer m-flicker delay-3" alt="L">
+            <img src="C.png" class="marquee-full-layer m-flicker delay-4" alt="C">
+            <img src="RightStar.png" class="marquee-full-layer star-right" alt="*">
+        </div>
+
+        <!-- LAYER 3: The CRT Screen -->
+        <div class="crt-content">
+            <div class="inner-scanlines"></div>
             
-            <!-- THE ARCADE CONVERTER -->
-            <div class="arcade-wrapper">
+            <!-- STATE 0: Attract Mode (Boot Up) -->
+            <div class="crt-state active-state" id="state0-attract">
+                <h2 class="attract-title">THE TRANSLATOR</h2>
+                <p class="attract-sub">CONVERT SUBTITLE FILES</p>
+                <p class="attract-sub pink">- NO CREDITS REQUIRED -</p>
                 
-                <!-- LAYER 0: Deep Space Background (Fixed File Name!) -->
-                <img src="Background.png" class="space-bg-layer" alt="Deep Space">
-                
-                <!-- LAYER 1: The Cosmos Canvas (Stars, Planets, UFOs) -->
-                <canvas id="cosmosCanvas" class="cosmos-canvas-layer"></canvas>
-
-                <!-- LAYER 2: The Transparent Cabinet Image -->
-                <img src="cabinet-cutout.png" class="cabinet-layer" alt="Cabinet Deck">
-
-                <!-- LAYER 2.5: The Full-Canvas Marquee Stack -->
-                <div class="full-canvas-marquee">
-                    <img src="marquee.png" class="marquee-full-layer" alt="Marquee Base">
-                    <img src="T.png" class="marquee-full-layer m-flicker delay-1" alt="T">
-                    <img src="B.png" class="marquee-full-layer m-flicker delay-2" alt="B">
-                    <img src="L.png" class="marquee-full-layer m-flicker delay-3" alt="L">
-                    <img src="C.png" class="marquee-full-layer m-flicker delay-4" alt="C">
-                    <img src="RightStar.png" class="marquee-full-layer star-right" alt="*">
-                </div>
-
-                <!-- LAYER 3: The CRT Screen -->
-                <div class="crt-content">
-                  <div class="inner-scanlines"></div>
-                  
-                  <!-- STATE 0: Attract Mode (Boot Up) -->
-                  <div class="crt-state active-state" id="state0-attract">
-                      <h2 class="attract-title">THE TRANSLATOR</h2>
-                      <p class="attract-sub">CONVERT SUBTITLE FILES</p>
-                      <p class="attract-sub pink">- NO CREDITS REQUIRED -</p>
-                      
-                      <div class="start-btn-container">
-                          <span class="arcade-start-text blink">START</span>
-                      </div>
-                  </div>
-                  
-                </div>
-
-                <!-- LAYER 4: The Interactive Control Deck -->
-                <div class="control-deck">
-                  <!-- Master Actions -->
-                  <button class="arcade-btn load-btn" id="uploadBtn" title="Load File"></button>
-                  <button class="arcade-btn ignore-btn" id="ignoreBtn" title="Ignore Warnings"></button>
-                  <button class="arcade-btn execute-btn" id="executeBtn" title="Execute Conversion"></button>
-                  <button class="arcade-btn reset-btn" id="resetBtn" title="Reset Machine"></button>
-                  <button class="arcade-btn hq-btn" id="arcadeBtn" title="Return to HQ"></button>
-
-                  <!-- Timecode Calibrators -->
-                  <button class="arcade-btn cal-btn minus-btn" id="decreaseTime" title="Shift Backward"></button>
-                  <button class="arcade-btn cal-btn plus-btn" id="increaseTime" title="Shift Forward"></button>
-
-                  <!-- Format Outputs -->
-                  <button class="arcade-btn format-btn srt-btn" data-format="srt"></button>
-                  <button class="arcade-btn format-btn vtt-btn" data-format="vtt"></button>
-                  <button class="arcade-btn format-btn ttml-btn" data-format="ttml"></button>
-                  <button class="arcade-btn format-btn xml-btn" data-format="xml"></button>
-                  <button class="arcade-btn format-btn txt-btn" data-format="txt"></button>
-                  
-                  <!-- Hidden File Input -->
-                  <input type="file" id="fileInput" accept=".srt,.vtt,.ttml,.xml,.txt" style="display: none;">
+                <div class="start-btn-container">
+                    <span class="arcade-start-text blink">START</span>
                 </div>
             </div>
+        </div>
+
+        <!-- LAYER 4: The Interactive Control Deck -->
+        <div class="control-deck">
+            <!-- Master Actions -->
+            <button class="arcade-btn load-btn" id="uploadBtn" title="Load File"></button>
+            <button class="arcade-btn ignore-btn" id="ignoreBtn" title="Ignore Warnings"></button>
+            <button class="arcade-btn execute-btn" id="executeBtn" title="Execute Conversion"></button>
+            <button class="arcade-btn reset-btn" id="resetBtn" title="Reset Machine"></button>
+            <button class="arcade-btn hq-btn" id="arcadeBtn" title="Return to HQ"></button>
+
+            <!-- Timecode Calibrators -->
+            <button class="arcade-btn cal-btn minus-btn" id="decreaseTime" title="Shift Backward"></button>
+            <button class="arcade-btn cal-btn plus-btn" id="increaseTime" title="Shift Forward"></button>
+
+            <!-- Format Outputs -->
+            <button class="arcade-btn format-btn srt-btn" data-format="srt"></button>
+            <button class="arcade-btn format-btn vtt-btn" data-format="vtt"></button>
+            <button class="arcade-btn format-btn ttml-btn" data-format="ttml"></button>
+            <button class="arcade-btn format-btn xml-btn" data-format="xml"></button>
+            <button class="arcade-btn format-btn txt-btn" data-format="txt"></button>
             
+            <!-- Hidden File Input -->
+            <input type="file" id="fileInput" accept=".srt,.vtt,.ttml,.xml,.txt" style="display: none;">
         </div>
     </div>
 </div>
 
+<!-- Update this to match your actual JS file name -->
 <script src="app.js"></script>
 </body>
 </html>
