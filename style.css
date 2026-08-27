@@ -69,20 +69,18 @@ body {
       position: absolute;
       z-index: 2; 
       
-      /* SURGICAL BOUNDS: Fits the glass perfectly and drops the floor without bleeding out the sides */
-      top: 31%;    
-      left: 34%;
-      width: 32%;
-      height: 35%;
+      /* Shifted down and heightened to center text and cover the gap */
+      top: 33%;    
+      left: 33%;
+      width: 34%;
+      height: 38%;
       
       background-color: #020604; 
       box-sizing: border-box;
       
-      /* Soft rounding and gentle shadow to fill sub-pixel gaps without bleeding into space */
       border-radius: 20px;
       box-shadow: 0 0 10px 5px #020604;
       
-      /* THE FIX: Removed 'overflow: hidden' so the text never gets chopped off! */
       display: flex;
       flex-direction: column;
       justify-content: center;
