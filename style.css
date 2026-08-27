@@ -197,8 +197,15 @@ transform-origin: center center;
         .delay-3 { animation-delay: 0.6s; animation-duration: 3.5s; }
         .delay-4 { animation-delay: 2.3s; animation-duration: 2.8s; }
 
-        .star-twinkle {
+        /* Left Star: Smooth Glowing Pulse */
+        .star-left {
             animation: starTwinkle 1.5s infinite alternate;
+        }
+
+        /* Right Star: Broken Sputtering Neon */
+        .star-right {
+            animation: neonFlicker 3s infinite;
+            animation-delay: 1.2s; /* Desyncs the pop from the letters */
         }
 
         @keyframes neonFlicker {
@@ -216,4 +223,57 @@ transform-origin: center center;
         @keyframes starTwinkle {
             0% { opacity: 0.4; filter: brightness(0.8); }
             100% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 5px #ffea00); }
+        }
+
+/* --- THE LAYER SANDWICH --- */
+        .space-bg-layer {
+          position: absolute; z-index: 0;
+          top: 0; left: 0; width: 100%; height: 100%;
+          object-fit: contain; pointer-events: none;
+        }
+
+        .cosmos-canvas-layer {
+          position: absolute; z-index: 1;
+          top: 0; left: 0; width: 100%; height: 100%;
+          pointer-events: none;
+        }
+
+        /* Update your existing cabinet-layer to z-index 2 */
+        .cabinet-layer {
+          position: absolute; z-index: 2;
+          top: 0; left: 0; width: 100%; height: 100%;
+          object-fit: contain; pointer-events: none; 
+        }
+
+        /* --- STATE 0 CRT TYPOGRAPHY --- */
+        .crt-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+        .crt-state.active-state { display: flex; }
+
+        .attract-title {
+            color: #00f0ff;
+            font-size: 2vw;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00f0ff;
+        }
+
+        .attract-sub {
+            color: #fff;
+            font-size: 1vw;
+            margin-bottom: 5px;
+        }
+        .attract-sub.pink { color: #ff007f; margin-bottom: 30px; }
+
+        .arcade-start-text {
+            color: #39ff14;
+            font-size: 2.5vw;
+            cursor: pointer;
+            text-shadow: 0 0 15px #39ff14;
+            pointer-events: auto; /* Allows the user to click it through the CRT glass */
         }
