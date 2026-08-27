@@ -147,6 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
         let cw = cosmosCanvas.width;
         let ch = cosmosCanvas.height;
 
+        // THE FIX: Create a clipping mask for the top 68% of the screen (The Sky)
+        // Nothing will draw over your neon grid floor!
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 0, cw, ch * 0.68); 
+        ctx.clip();
+
         // Draw Twinkling Stars
         stars.forEach(star => {
             star.twinkle += star.speed; 
@@ -155,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.fillRect(star.x * cw, star.y * ch, star.size, star.size);
         });
 
-        // Spawn & Draw Planets (from Trophies page logic)
+        // Spawn & Draw Planets
         if (Math.random() < 0.005) {
             planets.push({ 
                 x: Math.random() * cw, y: -50, 
@@ -185,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (p.y > ch + 100) planets.splice(i, 1);
         }
 
-        // Spawn & Draw UFO (from Battle Canvas logic)
+        // Spawn & Draw UFO
         if (!activeUfo && Math.random() < 0.003) {
             activeUfo = { x: -50, y: ch * 0.1 + Math.random() * (ch * 0.3), speed: 3 + Math.random() * 3 };
         }
@@ -206,7 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (activeUfo.x > cw + 60) activeUfo = null;
         }
+
+        ctx.restore(); // Restore from clipping mask
     }
-    
-    drawCosmos();
-});
