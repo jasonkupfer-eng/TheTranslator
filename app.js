@@ -114,10 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = cosmosCanvas.getContext('2d');
     let frame = 0;
     
-    // Sync canvas to the wrapper size
     function syncCosmos() {
         const wrapper = document.querySelector('.arcade-wrapper');
-        // Ensure wrapper has dimensions before setting
         if (wrapper && wrapper.clientWidth > 0 && wrapper.clientHeight > 0) {
             if (cosmosCanvas.width !== wrapper.clientWidth || cosmosCanvas.height !== wrapper.clientHeight) {
                 cosmosCanvas.width = wrapper.clientWidth;
@@ -126,27 +124,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 1. Generate Stars
+    // 1. Generate Brighter, Denser Stars
     const stars = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 100; i++) {
         stars.push({
             x: Math.random(), y: Math.random(),
-            size: Math.random() * 2 + 1,
+            size: Math.random() * 2.5 + 1.5, // Bigger stars
             twinkle: Math.random() * Math.PI * 2,
-            speed: 0.02 + Math.random() * 0.03
+            speed: 0.02 + Math.random() * 0.04
         });
     }
 
-    let activeUfo = null;
+    let ufos = [];
     let planets = [];
 
     function drawCosmos() {
         requestAnimationFrame(drawCosmos);
-        
-        // THE FIX: Check the dimensions every single frame!
         syncCosmos();
         
-        // Prevent drawing if the canvas hasn't sized up yet
         if (cosmosCanvas.width === 0 || cosmosCanvas.height === 0) return;
 
         frame++;
@@ -157,15 +152,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.save();
         ctx.beginPath();
-        ctx.rect(0, 0, cw, ch * 0.68); 
+        // THE FIX: Horizon lowered to exactly 73.2% to match the grid
+        ctx.rect(0, 0, cw, ch * 0.732); 
         ctx.clip();
 
-        // Draw Twinkling Stars
+        // Draw Twinkling Stars (With Glow)
         stars.forEach(star => {
             star.twinkle += star.speed; 
-            let alpha = 0.1 + Math.abs(Math.sin(star.twinkle)) * 0.9;
+            let alpha = 0.3 + Math.abs(Math.sin(star.twinkle)) * 0.7; // Higher base brightness
             ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+            
+            // Adds a halo glow to the stars
+            ctx.shadowBlur = 6; 
+            ctx.shadowColor = '#ffffff';
+            
             ctx.fillRect(star.x * cw, star.y * ch, star.size, star.size);
+            ctx.shadowBlur = 0; // Reset shadow for other objects
         });
 
         // Spawn & Draw Planets
@@ -198,26 +200,44 @@ document.addEventListener("DOMContentLoaded", () => {
             if (p.y > ch + 100) planets.splice(i, 1);
         }
 
-        // Spawn & Draw UFO
-        if (!activeUfo && Math.random() < 0.003) {
-            activeUfo = { x: -50, y: ch * 0.1 + Math.random() * (ch * 0.3), speed: 3 + Math.random() * 3 };
+        // Spawn & Draw Multiple UFOs
+        if (Math.random() < 0.012 && ufos.length < 4) {
+            ufos.push({ 
+                x: -60, 
+                y: ch * 0.1 + Math.random() * (ch * 0.4), 
+                speed: 2 + Math.random() * 4,
+                type: Math.floor(Math.random() * 3)
+            });
         }
 
-        if (activeUfo) {
-            activeUfo.x += activeUfo.speed; 
-            let ufoY = activeUfo.y + Math.sin(frame * 0.05) * 15;
+        for (let i = ufos.length - 1; i >= 0; i--) {
+            let u = ufos[i];
+            u.x += u.speed; 
+            let ufoY = u.y + Math.sin(frame * 0.05 + i) * 15;
             
-            ctx.save(); ctx.translate(activeUfo.x, ufoY);
-            ctx.fillStyle = 'rgba(0, 240, 255, 0.5)'; ctx.beginPath(); ctx.arc(0, -3, 10, Math.PI, 0); ctx.fill();
-            ctx.fillStyle = '#95a5a6'; ctx.beginPath(); ctx.ellipse(0, 0, 22, 6, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.save(); ctx.translate(u.x, ufoY);
             
-            if (frame % 20 < 10) { 
-                ctx.fillStyle = '#ff007f'; ctx.fillRect(-14, -1, 3, 3); 
-                ctx.fillStyle = '#39ff14'; ctx.fillRect(11, -1, 3, 3); 
+            if (u.type === 0) {
+                // Classic Cyan/Grey
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)'; ctx.beginPath(); ctx.arc(0, -3, 10, Math.PI, 0); ctx.fill();
+                ctx.fillStyle = '#95a5a6'; ctx.beginPath(); ctx.ellipse(0, 0, 22, 6, 0, 0, Math.PI * 2); ctx.fill();
+                if (frame % 20 < 10) { 
+                    ctx.fillStyle = '#ff007f'; ctx.fillRect(-14, -1, 3, 3); 
+                    ctx.fillStyle = '#39ff14'; ctx.fillRect(11, -1, 3, 3); 
+                }
+            } else if (u.type === 1) {
+                // Green Space Invader
+                ctx.fillStyle = '#39ff14'; ctx.fillRect(-12, -8, 24, 16); ctx.fillRect(-20, -4, 8, 8); ctx.fillRect(12, -4, 8, 8);
+                ctx.fillStyle = '#000'; ctx.fillRect(-8, -4, 4, 4); ctx.fillRect(4, -4, 4, 4);
+            } else {
+                // Yellow/Pink Dart
+                ctx.fillStyle = '#ffea00'; ctx.beginPath(); ctx.moveTo(0, -12); ctx.lineTo(-16, 8); ctx.lineTo(16, 8); ctx.fill();
+                ctx.fillStyle = '#ff007f'; ctx.fillRect(-6, 8, 12, 6);
             }
+            
             ctx.restore();
             
-            if (activeUfo.x > cw + 60) activeUfo = null;
+            if (u.x > cw + 60) ufos.splice(i, 1);
         }
 
         ctx.restore(); // Restore from clipping mask
