@@ -117,13 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Sync canvas to the wrapper size
     function syncCosmos() {
         const wrapper = document.querySelector('.arcade-wrapper');
-        if (wrapper && (cosmosCanvas.width !== wrapper.clientWidth || cosmosCanvas.height !== wrapper.clientHeight)) {
-            cosmosCanvas.width = wrapper.clientWidth;
-            cosmosCanvas.height = wrapper.clientHeight;
+        // Ensure wrapper has dimensions before setting
+        if (wrapper && wrapper.clientWidth > 0 && wrapper.clientHeight > 0) {
+            if (cosmosCanvas.width !== wrapper.clientWidth || cosmosCanvas.height !== wrapper.clientHeight) {
+                cosmosCanvas.width = wrapper.clientWidth;
+                cosmosCanvas.height = wrapper.clientHeight;
+            }
         }
     }
-    window.addEventListener('resize', syncCosmos);
-    syncCosmos();
 
     // 1. Generate Stars
     const stars = [];
@@ -141,14 +142,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function drawCosmos() {
         requestAnimationFrame(drawCosmos);
+        
+        // THE FIX: Check the dimensions every single frame!
+        syncCosmos();
+        
+        // Prevent drawing if the canvas hasn't sized up yet
+        if (cosmosCanvas.width === 0 || cosmosCanvas.height === 0) return;
+
         frame++;
         ctx.clearRect(0, 0, cosmosCanvas.width, cosmosCanvas.height);
         
         let cw = cosmosCanvas.width;
         let ch = cosmosCanvas.height;
 
-        // THE FIX: Create a clipping mask for the top 68% of the screen (The Sky)
-        // Nothing will draw over your neon grid floor!
         ctx.save();
         ctx.beginPath();
         ctx.rect(0, 0, cw, ch * 0.68); 
@@ -216,3 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.restore(); // Restore from clipping mask
     }
+    
+    drawCosmos();
+});
